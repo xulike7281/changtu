@@ -1,0 +1,17 @@
+/* pages/attention/attention.wxss */
+.container{
+
+  padding: 30rpx 30rpx 0rpx 30rpx;
+   box-sizing: border-box;
+  border-top:1px solid rgba(0,0,0,0.1)
+}
+.content{
+  text-indent: 1.5rem;
+}
+.img-wrap{
+  margin-top: 20rpx;
+}
+.img-wrap image{
+ width: 690rpx;
+ height: 344rpx;
+}

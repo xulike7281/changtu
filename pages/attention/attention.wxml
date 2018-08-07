@@ -1,0 +1,10 @@
+<!--pages/attention/attention.wxml-->
+<view class="container bg-fff">
+  <view class='content color-000 ft14'>
+   {{content}}
+   </view>
+  
+   <!-- <view class='img-wrap'>
+    <image src='../../static/img/index_swiper1.png'></image>
+   </view> -->
+</view>

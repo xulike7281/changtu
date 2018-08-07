@@ -1,0 +1,74 @@
+/**index.wxss**/
+.container{
+  background: #fff;
+}
+.swiper-wrap {
+  width: 100%;
+}
+.swiper-item{
+  height: 360rpx;
+}
+.slide-image {
+  width: 100%;
+  height: 360rpx;
+}
+
+.main {
+  width: 100%;
+  padding: 0 26rpx 0 28rpx;
+  box-sizing: border-box;
+}
+
+.utilsLi {
+  height: 185rpx;
+  padding: 0 32rpx 0 27rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #f2f2f2;
+}
+.utilsLi:first-child{
+  height: 195rpx;
+}
+.utilsLi:last-child{
+  height: 187rpx;
+  
+  border: none;
+}
+.text-msg {
+  padding: 0rpx 11rpx 0rpx 11rpx;
+  margin-left: 39rpx;
+  margin-top: 5rpx;
+  background: rgba(255, 0, 0, 1);
+  border-radius: 10rpx;
+}
+
+.icon-wrap image {
+  width: 96rpx;
+  height: 90rpx;
+}
+
+.shop{
+  width: 733rpx;
+  height: 184rpx;
+  background: url("https://ct.jikeyun.net/xcx_img/index_shop_bg.png");
+  background-size: 100% 100%;
+    /* background: gray;   */
+    padding-top: 48rpx;
+    box-sizing: border-box;
+}
+.shop-wrap{
+  padding-left: 58rpx;
+  padding-right: 78rpx;
+  box-sizing: border-box;
+}
+/* .shop image{
+  width: 733rpx;
+  height: 238rpx;
+} */
+.shop-content{
+  color: white;
+}
+.location_icon{
+  width: 88rpx;
+  height: 88rpx;
+  /* z-index: 9; */
+}

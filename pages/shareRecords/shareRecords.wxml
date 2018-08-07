@@ -1,0 +1,17 @@
+<!--pages/shareRecords/shareRecords.wxml-->
+<view class="container">
+  <view class='share-wrap bg-fff'>
+    <view class='share-li row cen-center ' wx:for="{{shareList}}" wx:key="{{index}}">
+      <view>
+        <image src='{{item.author}}'></image>
+      </view>
+      <view class='equal'>
+        <view class='row cen-space'>
+          <text class='ft14 color-323232'>成功邀请{{item.name}}</text>
+          <text class='ft12 color-999'>{{item.date}}</text>
+        </view>
+        <text class='ft12 color-999'>#活动名#{{item.activityName}}</text>
+      </view>
+    </view>
+  </view>
+</view>

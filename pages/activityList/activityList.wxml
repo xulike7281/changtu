@@ -1,0 +1,19 @@
+<!--pages/activityList/activityList.wxml-->
+<view class='container'>
+  <view class="activityLi-wrap">
+    <view class="activityLi bg-fff"  wx:for="{{activityList}}" wx:key='{{index}}' id="{{item.id}}" bindtap='selectFn'>
+      <image src='{{item.pro_list_log}}'></image>
+      <view class='shopDetail'>
+        <view class='row cen-space'>
+          <text class='ft18 color-000'>{{item.pro_name}}</text>
+          <text class='ft12 color-323232 line-through'>原价￥{{item.pro_price}}</text>
+        </view>
+        <view class='row cen-space'>
+          <text class='ft14 color-999'>{{item.msg}}</text>
+          <text class='ft20 color-E93A44'>￥{{item.pro_real_price}}</text>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+</view>

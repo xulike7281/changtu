@@ -1,0 +1,38 @@
+<!--pages/user/user.wxml-->
+<view class="container">
+  <view class='user-top bg-fff'>
+    <view class='user-top-bg'></view>
+    <image class='user-bg' src='../../static/img/user_bg.png'></image>
+    <view class='user-name' wx-if="{{btnShow}}">
+      <!-- <image></image> -->
+      <view class='author-icon'>
+        <image src='{{avatarUrl}}'></image>
+      </view>
+      <text class=''>{{nickName}}</text>
+    </view>
+     <view class='userInfoBtn' wx:if="{{!btnShow}}">
+     <button class='userBtn'  open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"></button>
+     <text class='color-323232 ft16'>点击头像授权登录</text>
+    </view>
+
+  </view>
+  <view class='user-center bg-fff row cen-space'>
+    <view class='center-left column cen-center ' bindtap='shareRecords'>
+      <image src='../../static/img/share_icon.png'></image>
+      <text>分享记录</text>
+    </view>
+    <view class='center-right column cen-center ' bindtap='myReward'>
+      <image src='../../static/img/gift_icon.png'></image>
+      <text>我的奖励</text>
+    </view>
+  </view>
+  <view class='userList bg-fff margin10-top'>
+    <view class='list-item row cen-space' wx:for="{{userList}}" wx:key="{{index}}" id="{{index}}" bindtap='selectFn'>
+      <view>
+        <image src='{{item.icon}}'></image>
+        <text>{{item.msg}}</text>
+      </view>
+      <text class='jiantou'></text>
+    </view>
+  </view>
+</view>

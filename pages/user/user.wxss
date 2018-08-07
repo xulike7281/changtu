@@ -1,0 +1,105 @@
+/* pages/user/user.wxss */
+
+.user-top {
+  width: 100%;
+  position: relative;
+  top: 0rpx;
+  left: 0rpx;
+}
+
+.userInfoBtn{
+  position: absolute;
+  top: 18rpx;
+  left: 50%;
+  transform: translate(-50%,0%)
+}
+.userBtn{
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: url("https://ct.jikeyun.net/xcx_img/share_author_icon.png");
+  background-size: 100% 100%;
+  margin-bottom: 10rpx;
+}
+.user-top-bg {
+  width: 100%;
+  height: 170rpx;
+}
+
+.user-bg {
+  width: 100%;
+  height: 124rpx;
+}
+
+.author-icon {
+  width: 140rpx;
+  height: 140rpx;
+  border: 1px solid #e62431;
+  border-radius: 140rpx 140rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-bottom: 10rpx;
+}
+.author-icon image{
+  width: 100%;
+  height: 100%;
+  border-radius: 140rpx 140rpx;
+}
+.user-name {
+  position: absolute;
+  left: 50%;
+  top: 18rpx;
+  transform: translate(-50%, 0);
+  text-align: center;
+}
+
+.user-center {
+  width: 100%;
+  height: 158rpx;
+  padding: 0 160rpx;
+  box-sizing: border-box;
+}
+
+.user-center image {
+  width: 50rpx;
+  height: 44rpx;
+  margin-bottom: 6rpx;
+}
+
+.center-left, .center-right {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.userList {
+  width: 100%;
+  padding-left: 30rpx;
+  box-sizing: border-box;
+}
+
+.list-item {
+  width: 100%;
+  padding-right: 25rpx;
+  border-bottom: 1px solid #ededed;
+  line-height: 104rpx;
+  box-sizing: border-box;
+}
+
+.list-item image {
+  margin-right: 28rpx;
+  width: 28rpx;
+  height: 28rpx;
+}
+
+.list-item text {
+  color: #000;
+  font-size: 32rpx;
+}
+
+.list-item .jiantou {
+  width: 14rpx;
+  height: 14rpx;
+  border-top: 2px solid #999;
+  border-right: 2px solid #999;
+  transform: rotate(45deg);
+}

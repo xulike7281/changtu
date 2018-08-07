@@ -1,0 +1,69 @@
+<!--pages/myReward/myReward.wxml-->
+<view class="container">
+  <view class='myReward-tab row cen-space'>
+    <view class='tab-item {{isShow?"activeTab":""}}' bindtap='switchTab'>优惠券</view>
+    <view class='tab-item {{!isShow?"activeTab":""}}' bindtap='switchTab'>礼金</view>
+  </view>
+
+  <view class='coupon-wrap ' wx:if="{{isShow}}">
+    <view class='couponDetail column cne-center'>
+      <view class='row cen-space width100'>
+        <text class='blodr'>优惠券明细</text>
+        <view class='row cen-center' bindtap='useRule'>
+          <text class='color-747474 ft12 margin5-right'>使用规则 </text>
+          <image wx:if='{{isUse}}' class='arrow' src='../../static/img/arrow-down.png'></image>
+          <image wx:if='{{!isUse}}' class='arrow-right' src='../../static/img/arrow-right.png'></image>
+        </view>
+      </view>
+      <view wx:if='{{isUse}}' class='width100 ft14 color-999 margin5-top'>1.使用规则爱撒烦死了案例善良的案例 </view>
+    </view>
+
+
+    <block wx:for="{{couponList}}" wx:key="{{index}}" data-idx="{{index}}" id="{{item.id}}">
+      <view class='margin10-top coupon-item'>
+        <view class='ft19 color-ff0000'>{{item.con}}</view>
+        <view class='ft12 color-b9b9b9 margin5-top'>有效期：{{item.yhq_start_ts}}-{{yhq_end_ts}}</view>
+        <view class='coupon-use row cen-space' bindtap='couponUseBtn' id="{{index}}">
+          <text class='ft12 color-323232'>使用须知</text>
+          <image wx-if="{{activeList[index]}}" class='arrow' src='../../static/img/arrow-down.png'></image>
+          <image wx-if="{{!activeList[index]}}" class='arrow-right' src='../../static/img/arrow-right.png'></image>
+        </view>
+      </view>
+      <view wx:if='{{activeList[index]}}' class='bg-fff coupon-use-detail width100 ft12 color-323232' data-idx="{{index}}">
+        <view>{{item.yhq_start_ts}}</view>
+      </view>
+    </block>
+  </view>
+
+  <view class='width100' wx:if="{{!isShow}}">
+    <view class='myReward-main margin10-top bg-fff'>
+      <view class='main-top row cen-space'>
+        <text class='color-323232 ft16'>礼金明细</text>
+        <view class='row cen-center'>
+          <text class='ft12 color-999 margin5-right' bindtap='rewardUseBtn'>使用规则</text>
+          <image wx-if="{{isRewardBUse}}" class='arrow' src='../../static/img/arrow-down.png'></image>
+          <image wx-if="{{!isRewardBUse}}" class='arrow-right' src='../../static/img/arrow-right.png'></image>
+        </view>
+      </view>
+      <view wx-if="{{isRewardBUse}}" class='reward-detail color-999 ft14'>
+        1.使用规则阿娇分离的时间飞撒到拉萨的肌肤的卡的的卡等级发送到家发
+      </view>
+    </view>
+    <view class='reward-list  bg-fff'>
+      <view class='re-li row cen-space' wx:for="{{rewardList}}" wx:key="{{index}}" id="{{item.id}}">
+        <text class='color-e62431 ft18'>￥{{item.mny}}</text>
+        <text class='color-999 ft12'>{{item.create_ts}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='reward-btn' bindtap='rewardBtn'>
+    去使用
+  </view>
+  <view class='shade' wx:if="{{isShade}}">
+    <view class='shade-bg'></view>
+    <view class='shade-main row cen-center'>
+      <text class='ft18' style='color:#000000'>{{shadeMsg}}的使用情况，请关注“畅途汽车保养连锁”公众号</text>
+      <image src='../../static/img/close_icon.png' bindtap='shade'></image>
+    </view>
+  </view>
+</view>

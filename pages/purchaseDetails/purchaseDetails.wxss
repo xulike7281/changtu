@@ -1,0 +1,40 @@
+/* pages/purchaseDetails/purchaseDetails.wxss */
+.content-wrap{
+width: 100%;
+}
+.content{
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+  border-bottom:1px solid rgba(226,226,226,1);
+}
+.productImg image{
+    width: 184rpx;
+    height: 128rpx;
+    margin-right: 20rpx;
+}
+.height32{
+  height: 64rpx;
+}
+.productName{
+  position: relative;
+  top: -12rpx;
+}
+.productPrice{
+ position: relative;
+  top: 10rpx;
+}
+.realPrice{
+  width: 100%;
+  color: #000;
+  text-align: right;
+  padding:20rpx 30rpx;
+  box-sizing: border-box;
+}
+.orderNo{
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+}
+.margin13-top{
+  margin-top: 26rpx;
+}

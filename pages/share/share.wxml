@@ -1,0 +1,132 @@
+<!--pages/share/share.wxml-->
+<import src="/wxParse/wxParse.wxml" />
+<view class='container'>
+  <view class='share-top'>
+    <image wx:if="{{pro_file_url[0].url_type==1}}" src='{{pro_file_url[0].url}}'></image>
+    <video wx:if="{{pro_file_url[0].url_type==2}}" src='{{pro_file_url[0].url}}'></video>
+    <view class='shopDetail'>
+      <view class='ft18 color-202020'>{{pro_title}}</view>
+      <view class='row cen-space'>
+        <text class='ft15 color-aaa'>所有畅途门店通用</text>
+        <text class='ft20 color-ff0000'>￥{{pro_price}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='share-main'>
+    <view class='share-content text-center'>
+      <view class='ft24 color-323232'>{{pro_tip}}</view>
+      <view class='ft17 margin10-top color-323232'>{{pro_tip2}}</view>
+      <view class='btn-wrap row cen-center'>
+        <view class='share-btn'>
+          <button data-name="shareBtn" open-type="share"></button>
+          <text class='share-text ft12 color-ff0000'>{{pro_tip3}}</text>
+        </view>
+        <view class='btn-line'></view>
+        <view class='shopping-btn'>
+          <image wx:if="{{pro_file==1}}" src='../../static/img/shopping_btn.png' bindtap='buyBtn'> </image>
+          <image wx:if="{{pro_file==0}}" src='../../static/img/get_icon.png' bindtap='getShopBtn'> </image>
+        </view>
+      </view>
+    </view>
+    <view class='share-records bg-fff'>
+      <view class='records-tit  row cen-center'>
+        <view class='records-line'></view>
+        <text class='ft17 color-000 margin10-left margin10-right'>分享记录</text>
+        <view class='records-line'></view>
+      </view>
+      <view class='invite-count' wx:if="{{recordsData.length}}">
+        已成功邀请了
+        <text class=' ft16 color-ff0000'>{{recordsData.length}}</text>名小伙伴
+      </view>
+      <view class='invite-count ft16' wx:if="{{recordsData.length==0}}">还没有获得奖励，快分享好友获得奖品吧！</view>
+      <view class='records row  cen-space' wx:for="{{recordsData}}" wx:key="{{index}}">
+        <view class='row cen-start'>
+          <image src='{{item.author}}'></image>
+          <view class='ft12'>
+            <view class='color-323232'>成功邀请
+              <text class='color-ff0000'>{{item.name}}</text> </view>
+            <view class='color-6C6C6C '>你已获得(
+              <text>{{item.msg}}</text>) </view>
+          </view>
+        </view>
+        <view class='ft12 color-aaa'>{{item.date}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='shop-detail bg-fff'>
+    <view class='detail-tit row cen-center'>
+      <view class='records-line'></view>
+      <text class='ft17 color-000 margin10-left margin10-right'>商品详情</text>
+      <view class='records-line'></view>
+    </view>
+    <view class='detail-text ft13'>
+      <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+      </view>
+    </view>
+  </view>
+
+  <!--  领取 弹窗 -->
+  <view class='getShop' wx:if="{{showShade}}">
+    <view class='shade'>
+      <view class='shade-bg'></view>
+      <view class='getShop-main column cen-start'>
+        <image class='shade-close' src='../../static/img/close_icon.png' bindtap='shade'></image>
+        <view class='get-option row cen-start'>
+          <view class='ipnut-icon phone_code'></view>
+          <input class='get-input ' type='number' maxlength='11' placeholder='请输入手机号码' placeholder-class='placeholder' bindinput='phoneNumber'> </input>
+        </view>
+        <view class='get-option row cen-start'>
+          <view class='ipnut-icon security_code'></view>
+          <view class='row cen-start'>
+            <input class='get-input ' type='number' placeholder='请输入验证码' placeholder-class='placeholder' bindinput='yzmCode'> </input>
+            <text class='getCode' bindtap='getCode'>{{codebtn}}</text>
+          </view>
+        </view>
+        <view class='get-option row cen-start'>
+          <view class='ipnut-icon car_code'></view>
+
+          <input class='get-input ' placeholder='请输入车牌号' placeholder-class='placeholder' bindinput='carCode'> </input>
+
+
+        </view>
+
+        <view class='get-btn' bindtap='getFn'>立即领取</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 领取成功的弹窗 -->
+  <view class='suchade' wx:if="{{successShade}}">
+    <view class='shade-bg'></view>
+    <view class='shade-success column cen-start'>
+      <image src='../../static/img/close_icon.png' bindtap='shadeSuccess'></image>
+      <text class='fe14 color-323232 '>恭喜您领取成功</text>
+      <text class='ft22 margin10-top margin10-bottom'>5折券</text>
+      <text class='ft14 margin5-bottom color-323232'>已经放入您189****0908账户</text>
+      <text class='ft16 color-EB3223'>请关注“畅途汽车保养连锁”公众号了解使用</text>
+      <view class='backIndex margin20-top  margin10-bottom' bindtap='backIndex'>返回首页</view>
+      <button class='shade-share-btn' open-type="share">分享幸运给小伙伴</button>
+    </view>
+  </view>
+  <!-- 领取过的弹窗 -->
+  <view class='shade' wx:if="{{haveShare}}">
+    <view class='shade-bg'></view>
+    <view class='have-share culomn cen-start'>
+      <image src='../../static/img/close_icon.png' bindtap='shareHave'></image>
+      <text class='ft14 color-323232'>您已领过券了</text>
+      <view class='ft16 color-EB3223  margin10-top  '>请关注“畅途汽车保养连锁”公众号了解使用</view>
+      <view class='backIndex margin20-top  margin10-bottom' bindtap='backIndex'>返回首页</view>
+      <button class='shade-share-btn' open-type="share">分享幸运给小伙伴</button>
+    </view>
+  </view>
+<!-- 活动结束 -->
+  <view class='shade' wx:if="{{failShare}}">
+    <view class='shade-bg'></view>
+    <view class='get-fail-share culomn cen-start'>
+      <image src='../../static/img/close_icon.png' bindtap='shareFail'></image>
+      <text class='ft14 color-323232'>活动已结束</text>
+      <view class='ft16 color-EB3223  margin10-top  '>请关注“畅途汽车保养连锁”公众号了解使用</view>
+    </view>
+  </view>
+</view>

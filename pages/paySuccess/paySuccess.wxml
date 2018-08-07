@@ -1,0 +1,19 @@
+<!--pages/paySuccess/paySuccess.wxml-->
+<view class='container'>
+    <view class='pay-success bg-fff column'>
+      <image src='../../static/img/pay_success.png'></image>
+      <view class='margin10-top ft14 color-323232'>订单支付成功</view>
+      <view class='margin10-top ft24 color-E93A44 margin5-right'>￥88.00</view>
+    </view>
+    <view class='bg-fff width100 row cen-space payMeans'>
+      <text class='ft14 color-999'>支付方式</text>
+      <text class='ft14 color-323232'>微信支付</text>
+    </view>
+    <view class='btns row cen-center ft16 color-E93A44'>
+      <view class='pay-btn' bindtap='lookOrder'>查看订单</view>
+      <button data-name="shareBtn" open-type="share" class='pay-btn'>分享好友</button>
+    </view>
+    <view class='backIndex ft16 color-E93A44' bindtap='backIndex'>
+      返回首页
+    </view>
+</view>

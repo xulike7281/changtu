@@ -1,0 +1,8 @@
+<!--pages/feedback/feedback.wxml-->
+<view class='container'>
+  <view class='textarea'>
+    <textarea placeholder="请填写您的意见或建议"  placeholder-style="color:#999;" maxlength="200" bindinput='textareaChange' ></textarea>
+    <view class='maxLenght'><text class='color-red'>{{valueCount}}</text>/200</view>
+  </view>
+  <view class='textareaBtn' bindtap='feedback'>提交</view>
+</view>

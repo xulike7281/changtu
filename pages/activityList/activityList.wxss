@@ -1,0 +1,24 @@
+/* pages/activityList/activityList.wxss */
+.activityLi-wrap{
+    width: 100%;
+    margin-top: 10rpx;
+}
+.activityLi{
+  width: 100%;
+   margin-top: 22rpx; 
+}
+.activityLi image{
+   vertical-align: top;
+   /* display: block; */
+  width: 100%;
+  height: 300rpx;
+}
+.shopDetail{
+  padding: 20rpx 30rpx;
+  
+}
+.getUserInfo{
+  width: 100%;
+  height: 100%;
+  background: red;
+}

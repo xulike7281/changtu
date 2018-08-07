@@ -1,0 +1,23 @@
+<!--pages/purchaseRecord/purchaseRecord.wxml-->
+<view class="container">
+  <view class='content-wrap bg-fff margin10-top'wx:for="{{purchaseList}}" wx:key="{{index}}" id ="{{item.id}}" bindtap='selectFn'>
+    <view class='content row cen-center' >
+      <view class='productImg'>
+        <image src='{{item.pro_logo}}'></image>
+      </view>
+      <view class='productDetail equal column cen-space'>
+        <view class='width100 height32 row cen-space productName'>
+          <text class='ft14 color-323232 '>{{item.pro_name}}</text>
+          <text class='ft14 color-E93A44'>{{item.payStatus}}</text>
+        </view>
+        <view class='width100 height32 row cen-space productPrice'>
+          <text class='ft14 color-E93A44'> <text class='ft10'>￥</text>{{item.pro_real_price}}</text>
+          <text class='ft14 color-999'>x{{item.pro_num}}</text>
+        </view>
+      </view>
+    </view>
+    <view class='realPrice'>
+      <text class='ft14'>实际付款: ￥{{item.real_mny}}</text>
+    </view>
+  </view>
+</view>

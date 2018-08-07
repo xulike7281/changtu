@@ -1,0 +1,307 @@
+/* pages/share/share.wxss */
+
+.share-top {
+  width: 100%;
+  background: #fff;
+}
+
+.share-top image {
+  display: block;
+  width: 100%;
+  height: 350rpx;
+}
+
+.share-top video {
+  display: block;
+  width: 100%;
+  height: 350rpx;
+}
+
+.shopDetail {
+  padding: 22rpx 30rpx;
+}
+
+.share-main {
+  width: 100%;
+  background: #fff;
+  margin-top: 22rpx;
+  padding: 0rpx 26rpx 0rpx 28rpx;
+  box-sizing: border-box;
+}
+
+.share-content {
+  padding: 64rpx 0rpx 96rpx 0rpx;
+  box-sizing: border-box;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.btn-wrap {
+  width: 100%;
+  margin-top: 56rpx;
+}
+
+.btn-line {
+  width: 1rpx;
+  height: 72rpx;
+  margin: 0rpx 40rpx;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.btn-wrap .shopping-btn image {
+  display: block;
+  width: 247rpx;
+  height: 88rpx;
+}
+
+.btn-wrap .share-btn {
+  position: relative;
+  width: 247rpx;
+  height: 88rpx;
+}
+
+.share-btn button {
+  height: 100%;
+  width: 100%;
+  background: url("https://ct.jikeyun.net/xcx_img/share_btn.png");
+  background-size: 100% 100%;
+  /* background: red; *//* border: 1px solid firebrick */
+}
+
+.btn-wrap .share-btn image {
+  display: block;
+  width: 247rpx;
+  height: 88rpx;
+}
+
+.share-text {
+  width: 100%;
+  /* display: block; */
+  position: absolute;
+  top: 92rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.share-records {
+  width: 100%;
+  padding: 34rpx 0rpx 20rpx 0rpx;
+}
+
+.records-tit {
+  width: 100%;
+}
+
+.records-line {
+  width: 47rpx;
+  height: 1px;
+  background: #e7e7e7;
+}
+
+.invite-count {
+  width: 100%;
+  color: #767676;
+  line-height: 76rpx;
+  text-align: center;
+}
+
+.records {
+  border-bottom: 1rpx solid #f2f2f2;
+  height: 80rpx;
+}
+
+.records:last-child {
+  border-bottom: none;
+}
+
+.records image {
+  width: 61rpx;
+  height: 61rpx;
+  margin-right: 28rpx;
+}
+
+.shop-detail {
+  width: 100%;
+  margin-top: 10rpx;
+  padding: 16rpx 30rpx 68rpx 30rpx;
+}
+
+.detail-text {
+  width: 100%;
+  margin-top: 38rpx;
+}
+
+.detail-img image {
+  width: 100%;
+  height: 360rpx;
+  margin-top: 44rpx;
+}
+
+.getSho {
+  width: 100%;
+  height: 100%;
+}
+
+.getShop-main {
+  width: 100%;
+  height: 648rpx;
+  background-color: #fff;
+  z-index: 9;
+  position: absolute;
+  left: 0rpx;
+  bottom: 0rpx;
+  padding-top: 90rpx;
+}
+
+.getShop-main .shade-close {
+  right: 32rpx;
+  top: 26rpx;
+}
+
+.get-option {
+  width: 607rpx;
+  height: 104rpx;
+  background: rgba(241, 241, 241, 1);
+  box-sizing: border-box;
+  border-radius: 15rpx;
+  margin-bottom: 21rpx;
+}
+
+.ipnut-icon {
+  width: 97rpx;
+  height: 104rpx;
+  background-repeat: no-repeat;
+}
+
+.get-input {
+  height: 104rpx;
+  display: block;
+  line-height: 100%;
+  box-sizing: border-box;
+}
+
+.phone_code {
+  background-image: url("https://ct.jikeyun.net/xcx_img/phone_code.png");
+  background-size: 31rpx 44rpx;
+  background-position: 34rpx 30rpx;
+}
+
+.security_code {
+  background-image: url("https://ct.jikeyun.net/xcx_img/security_code.png");
+  background-size: 33rpx 44rpx;
+  background-position: 33rpx 30rpx;
+}
+
+.car_code {
+  background-image: url("https://ct.jikeyun.net/xcx_img/car_icon.png");
+  background-size: 40rpx 34rpx;
+  background-position: 29rpx 38rpx;
+}
+
+.placeholder {
+  color: #bdbdbd;
+  font-size: 32rpx;
+}
+
+.getCode {
+  color: #767676;
+  font-size: 20rpx;
+  display: block;
+  width: 196rpx;
+  text-align: center;
+  line-height: 52rpx;
+  height: 52rpx;
+  border-left: 1px solid rgba(118, 118, 118, 1);
+}
+
+.get-btn {
+  width: 516rpx;
+  height: 88rpx;
+  background: rgba(255, 0, 0, 1);
+  border-radius: 44rpx;
+  margin-top: 24rpx;
+  line-height: 88rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 36rpx;
+}
+
+/* 领取成功 */
+.shade-success {
+  width: 532rpx;
+  height: 662rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx;
+  position: absolute;
+  top: 192rpx;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  padding: 104rpx 38rpx 80rpx 40rpx;
+  box-sizing: border-box;
+  text-align: center;
+ 
+}
+
+
+.shade-success,.have-share image {
+  position: absolute;
+  top: 20rpx;
+  right: 22rpx;
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.backIndex {
+  margin: 40rpx auto 20rpx auto;
+  width: 360rpx;
+  height: 70rpx;
+  border-radius: 12rpx;
+  border: 2rpx solid rgba(235, 50, 35, 1);
+  line-height: 70rpx;
+  color: #eb3223;
+  font-size: 32rpx;
+}
+
+.shade-share-btn {
+  width: 360rpx;
+  height: 70rpx;
+  background: rgba(235, 50, 35, 1);
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 70rpx;
+}
+.have-share {
+  width: 532rpx;
+  height: 542rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx;
+  position: absolute;
+  top: 192rpx;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  padding: 114rpx 38rpx 80rpx 40rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* 领取失败 */
+.get-fail-share{
+ width: 532rpx;
+  height: 438rpx;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx;
+  position: absolute;
+  top: 192rpx;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  padding: 132rpx 38rpx 80rpx 40rpx;
+  box-sizing: border-box;
+  text-align: center;
+}
+.get-fail-share image {
+  position: absolute;
+  top: 20rpx;
+  right: 22rpx;
+  width: 36rpx;
+  height: 36rpx;
+}

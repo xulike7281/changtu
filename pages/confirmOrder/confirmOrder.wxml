@@ -1,0 +1,43 @@
+<!--pages/confirmOrder/confirmOrder.wxml-->
+<view class='container'>
+    <view class='shopPrice-wrap bg-fff row cen-center'>
+      <view class='shopImg'><image src='{{pro_file_url}}'></image></view>
+      <view class='equal column cen-center margin15-left'>
+          <view class='width100 shopTit ft14 color-000'>{{pro_name}}</view>
+          <view class='width100 margin10-top row cen-space'>
+            <text class='color-e62431 f16'>{{pro_price}}</text>
+            <text class='ft14 color-999'>x1</text>
+          </view>
+      </view>
+    </view>
+    <view wx:if="{{!(has_sjhm==0&&has_hphm==0)}}" class='contactWay bg-fff  margin10-top'>
+      <view wx:if="{{has_sjhm==1}}" class='phone  row cen-space'>
+        <text class='color-323232 ft16'>手机号码</text>
+        <input class='ft14' placeholder='请输入手机号码' maxlength='11' bindinput='changePhone'></input>
+      </view>
+      <view  wx:if="{{has_hphm==1}}" class='carNo  row cen-space'>
+        <text class='color-323232 ft16'>车牌号</text>
+        <input class='ft14' placeholder='请输入车牌号' bindinput='changeCarNo'></input>
+      </view>
+    </view>
+    <view class='selectSpec'>
+      <view class='specTit'>套餐规格</view>
+      <view class='specItem-wrap' bindtap='selectSpec'>
+        <text class='specItem {{!activeSpec?"active":"notactive" }}' id= "1">规格一</text>
+        <text class='specItem {{activeSpec?"active":"notactive" }}' id="2">规格二</text>
+      </view>
+    </view>
+    <view class='applyStores'>
+      <view class='stores-tit'>适用门店</view>
+      <view class='stores-desc ft14'>
+      {{pro_shop}}
+      </view>
+    </view>
+    <view class='wxPay row cen-end'>
+      <view class='pay-money'>
+          <text class='ft12 color-323232'>合计金额: </text>
+          <text class='color-E93A44 ft16'> ￥88.00</text>
+      </view>
+      <view class='pay-btn' bindtap='payFn'>微信支付</view>
+    </view>
+</view>

@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/user/user",
+    "pages/purchaseDetails/purchaseDetails",
+    "pages/share/share",
+    "pages/myReward/myReward",
+    "pages/test/test",
+    "pages/login/login",
+    "pages/confirmOrder/confirmOrder",
+    "pages/purchaseRecord/purchaseRecord",
+    "pages/getPage/getPage",
+    "pages/activityList/activityList",
+    "pages/paySuccess/paySuccess",
+    "pages/shareRecords/shareRecords",
+    "pages/feedback/feedback",
+    "pages/attention/attention",
+    "pages/logs/logs",
+    "pages/coupon/coupon"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "畅途分享",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "pages": [
+      "pages/index/index"
+    ],
+    "selectedColor": "#FF1500",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./static/img/index_icon.png",
+        "selectedIconPath": "./static/img/selectIndex_icon.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我的",
+        "iconPath": "./static/img/my_icon.png",
+        "selectedIconPath": "./static/img/selectMy_icon.png"
+      }
+    ]
+  }
+}
