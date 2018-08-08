@@ -29,18 +29,26 @@ Page({
    */
   onLoad: function (options) {
     let  _this = this;
-    let parmas =JSON.parse(options.data)
-    console.log(parmas)
-    this.setData(parmas)
+    this.setData(options)
+    console.log(options)
+    let ct_userInfo = wx.getStorageSync("ct_userInfo")
+    if (ct_userInfo) {
+      this.setData({
+        userid: ct_userInfo.userid,
+        unique_id: ct_userInfo.unique_id
+      })
+    }
     Request.postFn("/api/order_detail.php",{
       userid:this.data.userid,
       ddbh: this.data.ddbh
     },
     res=>{
       let data = res.data;
+      if(data.state = "true"){
 
       console.log("订单详情",res)
-
+      _this.setData(data)
+      }
     },
     err=>{
 

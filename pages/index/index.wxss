@@ -20,7 +20,7 @@
 }
 
 .utilsLi {
-  height: 185rpx;
+  height: 195rpx;
   padding: 0 32rpx 0 27rpx;
   box-sizing: border-box;
   border-bottom: 2rpx solid #f2f2f2;
@@ -47,13 +47,20 @@
 }
 
 .shop{
-  width: 733rpx;
-  height: 184rpx;
-  background: url("https://ct.jikeyun.net/xcx_img/index_shop_bg.png");
+  width: 100%;
+  /* height: 184rpx; */
+  /* background: url("https://ct.jikeyun.net/xcx_img/index_shop_bg.png");
   background-size: 100% 100%;
     /* background: gray;   */
-    padding-top: 48rpx;
-    box-sizing: border-box;
+    /* padding-top: 48rpx; */
+    /* box-sizing: border-box; */ 
+    text-align: center
+}
+.shop image{
+  display: block;
+  margin: 0 auto;
+  width: 698rpx;
+  height: 174rpx;
 }
 .shop-wrap{
   padding-left: 58rpx;

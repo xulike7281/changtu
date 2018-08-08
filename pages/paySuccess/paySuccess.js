@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    
   },
   backIndex:function(){
     wx.reLaunch({
@@ -16,14 +16,15 @@ Page({
 
 
     wx.navigateTo({
-      url: '/pages/purchaseDetails/purchaseDetails',
+      url: '/pages/purchaseDetails/purchaseDetails?ddbh='+this.data.ddbh,
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log("paysuccess",options)
+      this.setData(JSON.parse(options.data))
   },
 
   /**

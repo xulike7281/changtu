@@ -3,7 +3,7 @@
     <view class='pay-success bg-fff column'>
       <image src='../../static/img/pay_success.png'></image>
       <view class='margin10-top ft14 color-323232'>订单支付成功</view>
-      <view class='margin10-top ft24 color-E93A44 margin5-right'>￥88.00</view>
+      <view class='margin10-top ft24 color-E93A44 margin5-right'>￥{{pro_real_price}}</view>
     </view>
     <view class='bg-fff width100 row cen-space payMeans'>
       <text class='ft14 color-999'>支付方式</text>

@@ -45,29 +45,7 @@ Page({
         avatarUrl: userInfo.avatarUrl,
         nickName: userInfo.nickName
       })
-      wx.login({
-        success: res => {
-          let code = res.code;
-          Request.postFn("/api/get_wx_userid.php", {
-              code: code,
-              nick: userInfo.nickName,
-              tx: userInfo.avatarUrl,
-             unique_id: _this.data.unique_id
-            },
-            res => {
-              let data = res.data;
-              console.log(data)
-              if (data.state == "true") {
-                wx.setStorage({
-                  key: 'ct_userInfo',
-                  data: data
-                })
-                _this.setData(data)
-              }
-            }
-          )
-        }
-      })
+     
 
     }
   },

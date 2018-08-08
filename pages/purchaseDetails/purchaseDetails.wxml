@@ -1,37 +1,37 @@
 <!--pages/purchaseDetails/purchaseDetails.wxml-->
 <view class="container">
-  <view class='content-wrap 'wx:for="{{purchaseList}}" wx:key="{{index}}">
+  <view class='content-wrap '>
     <view class='content row cen-center bg-fff' >
       <view class='productImg'>
-        <image src='{{item.pro_logo}}'></image>
+        <image src='{{detail.pro_logo}}'></image>
       </view>
       <view class='productDetail equal column cen-space'>
         <view class='width100 height32 row cen-space productName'>
-          <text class='ft14 color-323232 '>{{item.productName}}</text>
-          <text class='ft14 color-E93A44'>{{item.payStatus}}</text>
+          <text class='ft14 color-323232 '>{{detail.pro_name}}</text>
+          <text class='ft14 color-E93A44'>{{detail.payStatus}}</text>
         </view>
         <view class='width100 height32 row cen-space productPrice'>
-          <text class='ft14 color-E93A44'> <text class='ft10'>￥</text>{{item.real_mny}}</text>
-          <text class='ft14 color-999'>x{{item.pro_num}}</text>
+          <text class='ft14 color-E93A44'> <text class='ft10'>￥</text>{{detail.pro_real_price}}</text>
+          <text class='ft14 color-999'>x{{detail.pro_num}}</text>
         </view>
       </view>
     </view>
     <view class='realPrice bg-fff margin10-top'>
       <view class='row cen-space'>
         <text class='ft14 color-999'>商品总价</text>
-        <text class='ft14 color-999'>￥{{item.pro_real_price*item.pro_num}}</text>
+        <text class='ft14 color-999'>￥{{detail.pro_real_price*detail.pro_num}}</text>
       </view>
       <view class='row cen-space margin10-top'>
         <text class='ft16'>实际付款</text>
-         <text class='ft16 color-E93A44'> <text class='ft10'>￥</text>{{item.real_mny}}</text>
+         <text class='ft16 color-E93A44'> <text class='ft10'>￥</text>{{detail.real_mny}}</text>
       </view>
     </view>
     <view class='orderNo bg-fff  margin10-top column start-cen'>
-      <text class='ft14 color-999'>下单时间：2018-06-09 10:20</text>
-      <text class='ft14 color-999 margin5-top'>订单编号：15688980090</text>
+      <text class='ft14 color-999'>下单时间：{{detail.pay_ts}}</text>
+      <text class='ft14 color-999 margin5-top'>订单编号：{{detail.ddbh}}</text>
     </view>
   </view>
-  <view class='btn' bindtap='btnFn'>去使用</view>
+  <view class='btn' bindtap='btnFn' id="{{detail.id}}">去使用</view>
 
   <view class='shade' wx:if="{{isShade}}">
     <view class='shade-bg'></view>

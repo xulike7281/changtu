@@ -75,6 +75,7 @@ Page({
       res => {
         console.log("创建订单", res)
         let data = res.data
+        
         if (data.state == "true") {
           _this.setData({
             ddbh: data.ddbh
@@ -94,9 +95,9 @@ Page({
                 'signType': 'MD5', // 签名算法，暂支持 MD5
                 'paySign': data.paySign,
                 'success': function(res) {
-                  console.log("支付成功")
+                  console.log("支付成功",res)
                   wx.navigateTo({
-                    url: '/pages/paySuccess/paySuccess',
+                    url: '/pages/paySuccess/paySuccess?data=' + JSON.stringify(_this.data),
                   })
                 },
                 'fail': function(res) {}
@@ -116,20 +117,7 @@ Page({
 
     this.createOeder()
 
-    // wx.requestPayment({
-    //   'timeStamp': new Date().getTime(), // 当前的时间戳
-    //   'nonceStr': 'dsdsdsds', // 随机字符串，长度为32个字符以下。
-    //   'package': '', // 统一下单接口返回的 prepay_id 参数值
-    //   'signType': 'MD5', // 签名算法，暂支持 MD5
-    //   'paySign': '',
-    //   'success': function (res) {
-    //     wx.navigateTo({
-    //       url: '/pages/paySuccess/paySuccess',
-    //     })
-    //   },
-    //   'fail': function (res) {
-    //   }
-    // })
+ 
 
   },
   /**

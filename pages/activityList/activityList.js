@@ -11,33 +11,7 @@ Page({
 
   },
   selectFn(e) {
-    console.log(this.data.userid)
-    if (!this.data.userid) {
-      wx.showModal({
-        title: '提示',
-        content: '请授权登录查看详情',
-        showCancel: true,
-        cancelText: '取消',
-        cancelColor: 'gray',
-        confirmText: '确认',
-        confirmColor: 'green',
-        success: function(res) {
-          console.log(res)
-          if (res.confirm) {
-            wx.reLaunch({
-              url: '/pages/user/user',
-            })
-          }
-        },
-        fail: function(res) {},
-        complete: function(res) {},
-      })
-      return
-    }
-
-    console.log(e)
     let id = e.currentTarget.id
-
     wx.navigateTo({
       url: '/pages/share/share?pro_type_id=' + id,
     })

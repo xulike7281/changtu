@@ -1,7 +1,7 @@
 <!--pages/confirmOrder/confirmOrder.wxml-->
 <view class='container'>
     <view class='shopPrice-wrap bg-fff row cen-center'>
-      <view class='shopImg'><image src='{{pro_file_url}}'></image></view>
+      <view class='shopImg'><image src='{{pro_logo}}'></image></view>
       <view class='equal column cen-center margin15-left'>
           <view class='width100 shopTit ft14 color-000'>{{pro_name}}</view>
           <view class='width100 margin10-top row cen-space'>

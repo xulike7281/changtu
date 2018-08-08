@@ -2,7 +2,7 @@
 <view class="container">
   <!-- swiper  -->
   <view class='swiper-wrap'>
-    <swiper style="height:360rpx" indicator-dots="true" autoplay="true" interval="5000" duration="1000" indicator-color='rgba(170,170,170,0.36)' indicator-active-color='#fff'>
+    <swiper style="height:362rpx" indicator-dots="true" autoplay="true" interval="5000" duration="1000" indicator-color='rgba(170,170,170,0.36)' indicator-active-color='#fff'>
       <block wx:for="{{swiperList}}" wx:key="{{index}}">
         <swiper-item>
           <image src="{{item.url}}" class="slide-image" bindtap='selectSwiper' id="{{item.pro_id}}" />
@@ -26,8 +26,8 @@
       </view>
   </view>
   <view class='shop'>
-     <!-- <image src='../../static/img/shop_bg.png'></image>  -->
-     <view class='shop-wrap row cen-space '>
+     <image src='../../static/img/index_shop_bg.png'></image> 
+     <!-- <view class='shop-wrap row cen-space '>
         <view class='shop-content column '>
           <text class='ft20'>发现畅途</text>
           <text class='ft15 margin10-top'>畅途华南有70家门店在您身边</text>
@@ -35,6 +35,6 @@
         <view>
           <image class='location_icon' src='../../static/img/location_icon.png'></image>
         </view>
-     </view>
+     </view> -->
   </view>
 </view>
