@@ -8,7 +8,7 @@
       <view class='ft18 color-202020'>{{pro_title}}</view>
       <view class='row cen-space'>
         <text class='ft15 color-aaa'>所有畅途门店通用</text>
-        <text class='ft20 color-ff0000'>￥{{pro_price}}</text>
+        <text class='ft20 color-ff0000'>￥{{pro_real_price}}</text>
       </view>
     </view>
   </view>

@@ -5,7 +5,7 @@
       <view class='equal column cen-center margin15-left'>
           <view class='width100 shopTit ft14 color-000'>{{pro_name}}</view>
           <view class='width100 margin10-top row cen-space'>
-            <text class='color-e62431 f16'>{{pro_price}}</text>
+            <text class='color-e62431 f16'>{{pro_real_price}}</text>
             <text class='ft14 color-999'>x1</text>
           </view>
       </view>
