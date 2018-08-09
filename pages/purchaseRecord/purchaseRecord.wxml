@@ -1,6 +1,6 @@
 <!--pages/purchaseRecord/purchaseRecord.wxml-->
 <view class="container">
-  <view class='content-wrap bg-fff margin10-top'wx:for="{{purchaseList}}" wx:key="{{index}}" id ="{{item.id}}" bindtap='selectFn'>
+  <view class='content-wrap bg-fff margin10-top'wx:for="{{purchaseList}}" wx:key="{{index}}" id ="{{index}}" bindtap='selectFn'>
     <view class='content row cen-center' >
       <view class='productImg'>
         <image src='{{item.pro_logo}}'></image>

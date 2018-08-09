@@ -16,7 +16,7 @@ Page({
 
 
     wx.navigateTo({
-      url: '/pages/purchaseDetails/purchaseDetails?ddbh='+this.data.ddbh,
+      url: '/pages/purchaseDetails/purchaseDetails?data='+JSON.stringify(this.data),
     })
   },
   /**

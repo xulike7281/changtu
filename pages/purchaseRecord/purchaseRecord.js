@@ -7,25 +7,17 @@ Page({
    */
   data: {
     purchaseList:[
-      {
-        pro_logo: "../../static/img/shop.png", pro_name: "商品名称1", pro_real_price: "99", pro_num: 5, payStatus: "已支付", real_mny:"80",id:1
-      },
-      {
-        pro_logo: "../../static/img/shop.png", pro_name: "商品名称1", pro_real_price: "99", pro_num: 5, payStatus: "已支付", real_mny: "80", id: 2
-      },
-      {
-        pro_logo: "../../static/img/shop.png", pro_name: "商品名称1", pro_real_price: "99", pro_num: 5, payStatus: "已支付", real_mny: "80", id: 3
-      }
+      
     ]
   },
   selectFn:function(e){
     console.log(e.currentTarget.id)
-    let  id = e.currentTarget.id*1
+    let  index = e.currentTarget.id*1
     // let ddbh = this.data.purchaseList[id].ddbh
     
     let retbody={
         userid : this.data.userid,
-        ddbh:"2222018"
+      ddbh: this.data.purchaseList[index].ddbh
     }
     wx.navigateTo({
       url: '/pages/purchaseDetails/purchaseDetails?data='+JSON.stringify(retbody),

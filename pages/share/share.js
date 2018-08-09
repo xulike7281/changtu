@@ -22,7 +22,7 @@ Page({
     recordsData: []
   },
   // 返回首页
-  backIndex(){
+  backIndex() {
     wx.reLaunch({
       url: '/pages/index/index',
     })
@@ -35,14 +35,45 @@ Page({
   },
   // 领取 
   getShopBtn: function() {
-    console.log("领取")
-    this.setData({
-      showShade: true
+    let _this = this;
+    let is_can_lqParmas = {
+      pro_id: _this.data.id,
+      userid: _this.data.userid
+    }
+    console.log("查询领取限制参数", is_can_lqParmas)
+    Request.postFn("/api/is_can_lq.php", is_can_lqParmas, res => {
+      let data = res.data
+      console.log("领取条件", res)
+      if (data.state == "true") {
+        _this.setData({
+          showShade: true,
+          token:data.token
+        })
+      }else{
+        if (data.is_special==1){
+          _this.setData({
+            failShare: true
+          })
+        }else{
+          wx.showModal({
+            title: '提示',
+            content: data.msg,
+            showCancel: false,
+            cancelText: '',
+            cancelColor: '',
+            confirmText: '确定',
+            confirmColor: '',
+            success: function (res) { },
+            fail: function (res) { },
+            complete: function (res) { },
+          })
+        }
+      }
     })
+
   },
   // 领取失败
   shareFail: function() {
-    console.log("已经失败,活动已结束")
     this.setData({
       failShare: false
     })
@@ -62,6 +93,7 @@ Page({
   },
   // 去领取
   shade: function() {
+
     this.setData({
       showShade: false
     })
@@ -118,7 +150,7 @@ Page({
           res => {
             let data = res.data;
             console.log(data)
-            if(data.state=="true"){
+            if (data.state == "true") {
               wx.showToast({
                 title: res.data.msg,
                 icon: '',
@@ -126,27 +158,27 @@ Page({
                 duration: 2000,
                 mask: true
               })
-            let timer;
-            if (_this.data.second == 60) {
-              timer = setInterval(function() {
-                if (_this.data.second == 0) {
-                  clearInterval(timer)
-                  console.log("到0 了")
+              let timer;
+              if (_this.data.second == 60) {
+                timer = setInterval(function() {
+                  if (_this.data.second == 0) {
+                    clearInterval(timer)
+                    console.log("到0 了")
+                    _this.setData({
+                      second: 60,
+                      codebtn: "获取验证码"
+                    })
+
+                    return
+                  }
+
                   _this.setData({
-                    second: 60,
-                    codebtn: "获取验证码"
+                    second: _this.data.second - 1,
+                    codebtn: _this.data.second
                   })
+                }, 1000)
 
-                  return
-                }
-
-                _this.setData({
-                  second: _this.data.second - 1,
-                  codebtn: _this.data.second
-                })
-              }, 1000)
-
-            }
+              }
             }
           },
           res => {
@@ -184,40 +216,47 @@ Page({
   //  立即领取
   getFn: function() {
     let _this = this;
-    console.log("立即领取")
+    let free_order = {
+      userid: _this.data.userid,
+      pro_id: _this.data.pro_type_id,
+      token: _this.data.token,
+      sjhm: _this.data.phone,
+      code: _this.data.yzmCode,
+      hphm: _this.data.car_code,
+      unique_id: _this.data.unique_id,
+      data: ""
+    }
+    console.log("立即领取参数", free_order)
     if (_this.data.phone)
-      Request.postFn("/api/free_order.php", {
-        userid: _this.data.userid,
-        pro_id: _this.data.pro_type_id,
-        sjhm: _this.data.phone,
-        code: _this.data.yzmCode,
-        hphm: _this.data.car_code,
-        unique_id: _this.data.unique_id,
-        data: ""
-      },res=>{
-          let  data = res.data
-        if (data.state=="true"){
-          console.log("领取成功",res)
+      Request.postFn("/api/free_order.php", free_order , res => {
+        let data = res.data
+        if (data.state == "true") {
+          console.log("领取成功", res)
           _this.setData({
-            showShade:false,
-            successShade:true,
-            ddbh:data.ddbh,
+            showShade: false,
+            successShade: true,
+            ddbh: data.ddbh,
             _phone: _this.strFn(_this.data.phone)
           })
-         
-        }else{
+
+        } else {
           console.log("领取失败", res)
-          wx.showToast({
-            title: '验证码错误',
-            icon: '',
-            image: '../../static/img/icon_error.png',
-            duration: 2000,
-            mask: true
-          })
+          if (data.is_special==2){
+              _this.setData({
+                haveShare:true
+              })
+          }
+          // wx.showToast({
+          //   title: data.msg,
+          //   icon: '',
+          //   image: '../../static/img/icon_error.png',
+          //   duration: 2000,
+          //   mask: true
+          // })
         }
-      },res=>{
-        console.log("领取失败",res)
-        
+      }, res => {
+        console.log("领取失败", res)
+
       })
 
   },
@@ -248,15 +287,15 @@ Page({
     )
   },
   // 字符串替换
-  strFn:function(str){
+  strFn: function(str) {
 
-    return str.substring(0, 3) + "****" + str.substring(7,11)
+    return str.substring(0, 3) + "****" + str.substring(7, 11)
   },
   onLoad: function(options) {
-    console.log() 
+    console.log()
     let _this = this;
     this.setData(options)
-    console.log("接收的参数",options)
+    console.log("接收的参数", options)
     let ct_userInfo = wx.getStorageSync("ct_userInfo")
     if (ct_userInfo) {
       console.log("有用户信息", ct_userInfo)
@@ -349,6 +388,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function(res) {
+    let _this = this;
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
@@ -360,6 +400,27 @@ Page({
       path: 'pages/share/share?pro_type_id=' + this.data.pro_type_id + "&unique_id=" + this.data.unique_id,
       success: function(res) {
         // 转发成功
+        Request.postFn("/api/share.php", {
+            userid: _this.data.userid,
+            pro_id: _this.data.id
+          },
+          res => {
+            let data = res.data
+            if (data.state = "true") {
+
+
+              wx.showToast({
+                title: '分享成功',
+                icon: '',
+                image: '',
+                duration: 2000,
+                mask: true,
+                success: function(res) {},
+                fail: function(res) {},
+                complete: function(res) {},
+              })
+            }
+          })
       },
       fail: function(res) {
         // 转发失败

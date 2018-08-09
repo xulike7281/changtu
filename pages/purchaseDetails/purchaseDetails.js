@@ -7,11 +7,7 @@ Page({
    */
   data: {
     isShade:false,
-    purchaseList: [
-      {
-        pro_logo: "../../static/img/shop.png", pro_name: "商品名称1", pro_real_price: "99", pro_file: "1", pro_num: 5, payStatus: "已支付", real_mny: "80", ddbh:"2222018",id:"1"
-      }
-    ]
+    purchaseList: [ ]
   },
   shade:function(){
     this.setData({
@@ -29,8 +25,8 @@ Page({
    */
   onLoad: function (options) {
     let  _this = this;
-    this.setData(options)
-    console.log(options)
+    this.setData(JSON.parse(options.data))
+    console.log("数据",this.data)
     let ct_userInfo = wx.getStorageSync("ct_userInfo")
     if (ct_userInfo) {
       this.setData({
@@ -38,9 +34,11 @@ Page({
         unique_id: ct_userInfo.unique_id
       })
     }
+
+    console.log("请求的参数", this.data.ddbh)
     Request.postFn("/api/order_detail.php",{
-      userid:this.data.userid,
-      ddbh: this.data.ddbh
+      userid: _this.data.userid,
+      ddbh: _this.data.ddbh
     },
     res=>{
       let data = res.data;

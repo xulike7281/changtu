@@ -65,16 +65,17 @@ Page({
       })
       return
     }
-
-    Request.postFn("/api/pay_create_order.php", {
-        userid: this.data.userid,
-        pro_id: this.data.pro_id,
-        sjhm: this.data.sjhm,
-      pro_gg: _this.data.pro_gg[_this.data.pro_gg_index],
-        hphm: this.data.hphm,
-        pro_num: "1",
-        unique_id: this.data.unique_id
-      },
+    let o = {
+      userid: this.data.userid,
+      pro_id: this.data.pro_id*1,
+      sjhm: this.data.sjhm,
+      pro_gg: "规格一",
+      hphm: this.data.hphm,
+      pro_num: "1",
+      unique_id: this.data.unique_id
+    }
+    console.log("确认订单参数",o)
+    Request.postFn("/api/pay_create_order.php",o,
       res => {
         console.log("创建订单", res)
         let data = res.data
