@@ -38,7 +38,7 @@ Page({
 
       console.log("商品购买列表",options)
       this.setData(options)
-
+    
     Request.postFn("/api/my_order_list.php", {
       userid: this.data.userid
     },

@@ -12,6 +12,8 @@
       </view>
     </view>
   </view>
+ 
+
   <view class='share-main'>
     <view class='share-content text-center'>
       <view class='ft24 color-323232'>{{pro_tip}}</view>
@@ -21,6 +23,7 @@
           <button data-name="shareBtn" open-type="share"></button>
           <text class='share-text ft12 color-ff0000'>{{pro_tip3}}</text>
         </view>
+        
         <view class='btn-line'></view>
         <view class='shopping-btn'>
           <image wx:if="{{is_free==0}}" src='../../static/img/shopping_btn.png' bindtap='buyBtn'> </image>
@@ -128,6 +131,19 @@
       <image src='../../static/img/close_icon.png' bindtap='shareFail'></image>
       <text class='ft14 color-323232'>活动已结束</text>
       <view class='ft16 color-EB3223  margin10-top  '>请关注“畅途汽车保养连锁”公众号了解使用</view>
+    </view>
+  </view>
+
+   <!-- tab -->
+
+  <view class='share-tab row cen-space'>
+    <view class='tab-index equal column cen-center' bindtap='backIndex'>
+      <image src='../../static/img/index_icon.png'></image>
+      <text class='ft10'>首页</text>
+    </view>
+     <view class='tab-user equal column cen-center' bindtap='backUser'>
+      <image src='../../static/img/my_icon.png'></image>
+      <text class='ft10'>我的</text>
     </view>
   </view>
 </view>

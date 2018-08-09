@@ -21,7 +21,18 @@ Page({
     failShare: false, // 活动已结束
     recordsData: []
   },
-
+  // 返回首页
+  backIndex(){
+    wx.reLaunch({
+      url: '/pages/index/index',
+    })
+  },
+  // 返回我的
+  backUser() {
+    wx.reLaunch({
+      url: '/pages/user/user',
+    })
+  },
   // 领取 
   getShopBtn: function() {
     console.log("领取")
