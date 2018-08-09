@@ -29,28 +29,34 @@ Page({
   },
   onLoad: function() {
     let _this = this
-   
+
+
+
+
     wx.login({
       success: res => {
         let code = res.code;
-        Request.postFn("/api/get_wx_userid.php", {
+        Request.postFn("/api/get_wx_userid.php",{
           code: code,
-          nick: "shiyi",
-          tx: "ddddd",
-          unique_id: ""
+          nick:"",
+          tx:"https://ct.jikeyun.net/xcx_img/demo.png",
+          unique_id:""
         },
-          res => {
-            let data = res.data;
-            console.log(data)
-            if (data.state == "true") {
-              wx.setStorage({
-                key: 'ct_userInfo',
-                data: data
-              })
-              _this.setData(data)
-            }
+        res=>{
+          let data = res.data;
+          console.log(data)
+          if (data.state == "true") {
+            wx.setStorage({
+              key: 'ct_userInfo',
+              data: data
+            })
+
           }
-        )
+        },
+        res=>{
+         
+        })
+
       }
     })
 

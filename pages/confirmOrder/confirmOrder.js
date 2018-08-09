@@ -8,7 +8,10 @@ Page({
   data: {
     activeSpec: false,
     sjhm: "",
-    hphm: ""
+    hphm: "",
+    selectGg:"",
+    pro_gg_index:0,
+    pro_gg:["规格一","规格二"]
   },
   changePhone: function(e) {
     console.log(e.detail.value)
@@ -24,15 +27,15 @@ Page({
   },
   selectSpec: function(e) {
     console.log(e.target.id)
-    if (e.target.id == 2) {
+    if (e.target.id == 0) {
       this.setData({
         activeSpec: true,
-        pro_gg_index: e.target.id
+        pro_gg_index: e.target.id*1
       })
     } else if (e.target.id == 1) {
       this.setData({
         activeSpec: false,
-        pro_gg_index: e.target.id
+        pro_gg_index: e.target.id*1
       })
     }
   },
@@ -40,7 +43,7 @@ Page({
     let _this = this;
     console.log(this.data.sjhm, this.data.hphm)
     //创建订单
-    if (!(/^1[3|5|6|7|8][0-9]\d{8}$/.test(this.data.sjhm))) {
+    if (!(/^1[3|5|6|7|8][0-9]\d{8}$/.test(this.data.sjhm)) && this.data.has_sjhm) {
       console.log("请输入手机号码")
       wx.showToast({
         title: '请输入手机号码',
@@ -51,7 +54,7 @@ Page({
       })
       return
     }
-    if (!this.data.hphm) {
+    if (!this.data.hphm && this.data.has_hphm) {
       console.log("请输入车牌号码")
       wx.showToast({
         title: '请输入车牌号码',
@@ -67,7 +70,7 @@ Page({
         userid: this.data.userid,
         pro_id: this.data.pro_id,
         sjhm: this.data.sjhm,
-        pro_gg: "规格一",
+      pro_gg: _this.data.pro_gg[_this.data.pro_gg_index],
         hphm: this.data.hphm,
         pro_num: "1",
         unique_id: this.data.unique_id

@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    pro_type_id: "",
     codebtn: "获取验证码",
     phone: '',
     car_code: "",
@@ -61,7 +62,7 @@ Page({
   },
   buyBtn: function() {
     wx.navigateTo({
-      url: '/pages/confirmOrder/confirmOrder?id='+this.data.id,
+      url: '/pages/confirmOrder/confirmOrder?id=' + this.data.id,
     })
   },
   // 输入手机号码
@@ -106,6 +107,14 @@ Page({
           res => {
             let data = res.data;
             console.log(data)
+            if(data.state=="true"){
+              wx.showToast({
+                title: res.data.msg,
+                icon: '',
+                image: '',
+                duration: 2000,
+                mask: true
+              })
             let timer;
             if (_this.data.second == 60) {
               timer = setInterval(function() {
@@ -126,6 +135,7 @@ Page({
                 })
               }, 1000)
 
+            }
             }
           },
           res => {
@@ -170,36 +180,50 @@ Page({
         pro_id: _this.data.pro_type_id,
         sjhm: _this.data.phone,
         code: _this.data.yzmCode,
-        hphm: car_code,
+        hphm: _this.data.car_code,
         unique_id: _this.data.unique_id,
         data: ""
+      },res=>{
+          let  data = res.data
+        if (data.state=="true"){
+          console.log("领取成功",res)
+          _this.setData({
+            showShade:false,
+            successShade:true,
+            ddbh:data.ddbh,
+            _phone: _this.strFn(_this.data.phone)
+          })
+         
+        }else{
+          console.log("领取失败", res)
+          wx.showToast({
+            title: '验证码错误',
+            icon: '',
+            image: '../../static/img/icon_error.png',
+            duration: 2000,
+            mask: true
+          })
+        }
+      },res=>{
+        console.log("领取失败",res)
+        
       })
 
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  getDetail() {
     let _this = this;
-    let ct_userInfo = wx.getStorageSync("ct_userInfo")
-    if (ct_userInfo) {
-      this.setData({
-        userid: ct_userInfo.userid,
-        unique_id: ct_userInfo.unique_id
-      })
-    }
-    this.setData(options)
-    console.log("参数",_this.data.pro_type_id)
     Request.postFn("/api/detail.php", {
-      pro_id: _this.data.pro_type_id,
+        pro_id: _this.data.pro_type_id,
         userid: _this.data.userid,
         unique_id: _this.data.unique_id,
-
       },
       res => {
         let data = res.data;
         if (data.state == "true") {
-          console.log("share,res",data)
+          console.log(data.detail)
           _this.setData(data.detail)
           WxParse.wxParse('article', 'html', data.detail.pro_detail, _this, 5);
           _this.setData({
@@ -208,13 +232,64 @@ Page({
           })
         }
       },
-      res=>{
-        console.log(res)
-      },
-      res=>{
-        console.log("111",res)
-      }
+      res => {},
+      res => {}
     )
+  },
+  // 字符串替换
+  strFn:function(str){
+
+    return str.substring(0, 3) + "****" + str.substring(7,11)
+  },
+  onLoad: function(options) {
+    console.log() 
+    let _this = this;
+    this.setData(options)
+    console.log("接收的参数",options)
+    let ct_userInfo = wx.getStorageSync("ct_userInfo")
+    if (ct_userInfo) {
+      console.log("有用户信息", ct_userInfo)
+      this.setData({
+        userid: ct_userInfo.userid,
+        unique_id: ct_userInfo.unique_id
+      })
+      this.getDetail()
+    } else {
+      console.log("没有用户信息")
+      wx.login({
+        success: res => {
+          let code = res.code;
+          Request.postFn("/api/get_wx_userid.php", {
+              code: code,
+              nick: "",
+              tx: "https://ct.jikeyun.net/xcx_img/demo.png",
+              unique_id: _this.data.unique_id
+            },
+            res => {
+              let data = res.data;
+              console.log("活动详情页获取userid", data)
+              if (data.state == "true") {
+                wx.setStorage({
+                  key: 'ct_userInfo',
+                  data: data
+                })
+                _this.setData({
+                  userid: data.userid,
+                  unique_id: data.unique_id
+                })
+                this.getDetail()
+              }
+            },
+            res => {
+
+            })
+        }
+      })
+
+    }
+
+
+
   },
 
   /**
@@ -263,15 +338,15 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function(res) {
-    console.log("111")
     if (res.from === 'button') {
       // 来自页面内转发按钮
       console.log(res.target)
     }
-    
+
     return {
-      title: '自定义转发标ssss题',
-      path: 'pages/index/index',
+      title: '畅途汽车',
+      desc: "畅途汽车",
+      path: 'pages/share/share?pro_type_id=' + this.data.pro_type_id + "&unique_id=" + this.data.unique_id,
       success: function(res) {
         // 转发成功
       },

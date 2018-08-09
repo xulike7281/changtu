@@ -44,10 +44,13 @@ Page({
     },
       res => {
         let data = res.data;
+        if(data.state=="true"){
+          
           this.setData({
-            // purchaseList:data
+            purchaseList:data.list
           })
         console.log("订单列表", res)
+        }
 
       },
       err => {

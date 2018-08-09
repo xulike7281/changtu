@@ -3,7 +3,7 @@
   <view class='user-top bg-fff'>
     <view class='user-top-bg'></view>
     <image class='user-bg' src='../../static/img/user_bg.png'></image>
-    <view class='user-name' wx-if="{{btnShow}}">
+    <view class='user-name' >
       <!-- <image></image> -->
       <view class='author-icon'>
           <open-data type="userAvatarUrl"></open-data>

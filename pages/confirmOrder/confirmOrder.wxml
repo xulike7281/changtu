@@ -20,11 +20,10 @@
         <input class='ft14' placeholder='请输入车牌号' bindinput='changeCarNo'></input>
       </view>
     </view>
-    <view class='selectSpec'>
-      <view class='specTit'>套餐规格</view>
-      <view class='specItem-wrap' bindtap='selectSpec'>
-        <text class='specItem {{!activeSpec?"active":"notactive" }}' id= "1">规格一</text>
-        <text class='specItem {{activeSpec?"active":"notactive" }}' id="2">规格二</text>
+    <view class='selectSpec' wx:if="{{pro_gg.length}}">
+      <view class='specTit'>套餐规格{{pro_gg.length}}</view>
+      <view class='specItem-wrap'  >
+        <text class='specItem {{pro_gg_index==index?"active":"notactive" }}' bindtap='selectSpec' wx:for="{{pro_gg}}" wx:key="{{index}}" id="{{index}}">{{item}}{{index}} {{pro_gg_index}}</text>
       </view>
     </view>
     <view class='applyStores'>
@@ -36,7 +35,7 @@
     <view class='wxPay row cen-end'>
       <view class='pay-money'>
           <text class='ft12 color-323232'>合计金额: </text>
-          <text class='color-E93A44 ft16'> ￥88.00</text>
+          <text class='color-E93A44 ft16'> ￥{{pro_real_price}}</text>
       </view>
       <view class='pay-btn' bindtap='payFn'>微信支付</view>
     </view>

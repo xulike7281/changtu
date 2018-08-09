@@ -242,14 +242,20 @@
 }
 
 
-.shade-success,.have-share image {
+.shade-success image {
   position: absolute;
   top: 20rpx;
   right: 22rpx;
   width: 36rpx;
   height: 36rpx;
 }
-
+.have-share image{
+   position: absolute;
+  top: 20rpx;
+  right: 22rpx;
+  width: 36rpx;
+  height: 36rpx;
+}
 .backIndex {
   margin: 40rpx auto 20rpx auto;
   width: 360rpx;

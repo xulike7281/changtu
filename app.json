@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/share/share",
     "pages/user/user",
     "pages/purchaseDetails/purchaseDetails",
-    "pages/share/share",
     "pages/myReward/myReward",
     "pages/test/test",
     "pages/login/login",
