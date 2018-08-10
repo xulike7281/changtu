@@ -15,7 +15,7 @@
           <image wx:if='{{!isUse}}' class='arrow-right' src='../../static/img/arrow-right.png'></image>
         </view>
       </view>
-      <view wx:if='{{isUse}}' class='width100 ft14 color-999 margin5-top'>1.使用规则爱撒烦死了案例善良的案例 </view>
+      <view wx:if='{{isUse}}' class='width100 ft14 color-999 margin5-top'>1，本页面上我的优惠券记录只作为参与分享活动获得的激励明细展示，不作为你的畅途账户资产中的动态展示，请用户关注“畅途汽车保养连锁”公众号查看了解使用。</view>
     </view>
 
 
@@ -46,7 +46,11 @@
         </view>
       </view>
       <view wx-if="{{isRewardBUse}}" class='reward-detail color-999 ft14'>
-        1.使用规则阿娇分离的时间飞撒到拉萨的肌肤的卡的的卡等级发送到家发
+        <view>1，参与分享活动获得的礼金可在畅途旗下所有门店使用；</view>
+        <view>2，每笔礼金的有效期为到账日起365天内有效，逾期作废，不兑现；</view>
+        <view>3，礼金不可用于购买车险、车业代办服务、会员套餐、促销套餐和轮胎；</view>
+        <view>4，本页面上我的礼金记录只作为参与分享活动获得的激励明细展示，不作为你的畅途账户资产中的动态展示，请用户关注“畅途汽车保养连锁”公众号查看我的礼金余额</view>
+
       </view>
     </view>
     <view class='reward-list  bg-fff'>

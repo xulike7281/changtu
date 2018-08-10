@@ -67,7 +67,8 @@ Page({
       if(data.state=="true"){
         _this.setData({
           utilsList:data.pro_type,
-          swiperList:data.banner
+          swiperList:data.banner,
+          indexPage:true
         });
 
       }

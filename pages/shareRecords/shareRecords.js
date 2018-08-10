@@ -6,31 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shareList: [{
-        author: "../../static/img/share_author_icon.png",
-        name: "王艺洁",
-        activityName: "您已获得免费微镀晶洗车券一张",
-        date: '2018-02-15'
-      },
-      {
-        author: "../../static/img/share_author_icon.png",
-        name: "王艺洁",
-        activityName: "您已获得10元礼金",
-        date: '2018-02-15'
-      },
-      {
-        author: "../../static/img/share_author_icon.png",
-        name: "王艺洁",
-        activityName: "您已获得免费微镀晶洗车券一张",
-        date: '2018-02-15'
-      },
-      {
-        author: "../../static/img/share_author_icon.png",
-        name: "王艺洁",
-        activityName: "您已获得10元礼金",
-        date: '2018-02-15'
-      }
-    ]
+    shareList: []
   },
 
   /**

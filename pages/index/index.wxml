@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container" wx:if="{{indexPage}}">
   <!-- swiper  -->
   <view class='swiper-wrap'>
     <swiper style="height:362rpx" indicator-dots="true" autoplay="true" interval="5000" duration="1000" indicator-color='rgba(170,170,170,0.36)' indicator-active-color='#fff'>

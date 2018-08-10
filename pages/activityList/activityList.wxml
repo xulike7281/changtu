@@ -9,7 +9,7 @@
           <text class='ft12 color-323232 line-through'>原价￥{{item.pro_price}}</text>
         </view>
         <view class='row cen-space'>
-          <text class='ft14 color-999'>{{item.msg}}</text>
+          <text class='ft14 color-999'>{{item.pro_sub_title}}</text>
           <text class='ft20 color-E93A44'>￥{{item.pro_real_price}}</text>
         </view>
       </view>

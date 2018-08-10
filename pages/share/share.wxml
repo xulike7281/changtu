@@ -1,13 +1,13 @@
 <!--pages/share/share.wxml-->
 <import src="/wxParse/wxParse.wxml" />
-<view class='container'>
+<view class='container' wx:if="{{isPage}}">
   <view class='share-top'>
     <image wx:if="{{pro_file_url[0].url_type==1}}" src='{{pro_file_url[0].url}}'></image>
     <video wx:if="{{pro_file_url[0].url_type==2}}" src='{{pro_file_url[0].url}}'></video>
     <view class='shopDetail'>
       <view class='ft18 color-202020'>{{pro_title}}</view>
       <view class='row cen-space'>
-        <text class='ft15 color-aaa'>所有畅途门店通用</text>
+        <text class='ft15 color-aaa'>{{pro_sub_title}}</text>
         <text class='ft20 color-ff0000'>￥{{pro_real_price}}</text>
       </view>
     </view>
@@ -82,7 +82,7 @@
         <view class='get-option row cen-start'>
           <view class='ipnut-icon security_code'></view>
           <view class='row cen-start'>
-            <input class='get-input ' type='number' placeholder='请输入验证码' placeholder-class='placeholder' bindinput='yzmCode'> </input>
+            <input class='get-input equal ' type='number' placeholder='请输入验证码' placeholder-class='placeholder' bindinput='yzmCode'> </input>
             <text class='getCode' bindtap='getCode'>{{codebtn}}</text>
           </view>
         </view>

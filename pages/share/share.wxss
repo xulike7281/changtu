@@ -180,7 +180,8 @@
 }
 
 .ipnut-icon {
-  width: 97rpx;
+ 
+  min-width: 97rpx;
   height: 104rpx;
   background-repeat: no-repeat;
 }

@@ -47,14 +47,14 @@ Page({
       if (data.state == "true") {
         _this.setData({
           showShade: true,
-          token:data.token
+          token: data.token
         })
-      }else{
-        if (data.is_special==1){
+      } else {
+        if (data.is_special == 1) {
           _this.setData({
             failShare: true
           })
-        }else{
+        } else {
           wx.showModal({
             title: '提示',
             content: data.msg,
@@ -63,9 +63,9 @@ Page({
             cancelColor: '',
             confirmText: '确定',
             confirmColor: '',
-            success: function (res) { },
-            fail: function (res) { },
-            complete: function (res) { },
+            success: function(res) {},
+            fail: function(res) {},
+            complete: function(res) {},
           })
         }
       }
@@ -228,7 +228,7 @@ Page({
     }
     console.log("立即领取参数", free_order)
     if (_this.data.phone)
-      Request.postFn("/api/free_order.php", free_order , res => {
+      Request.postFn("/api/free_order.php", free_order, res => {
         let data = res.data
         if (data.state == "true") {
           console.log("领取成功", res)
@@ -241,10 +241,10 @@ Page({
 
         } else {
           console.log("领取失败", res)
-          if (data.is_special==2){
-              _this.setData({
-                haveShare:true
-              })
+          if (data.is_special == 2) {
+            _this.setData({
+              haveShare: true
+            })
           }
           // wx.showToast({
           //   title: data.msg,
@@ -278,7 +278,7 @@ Page({
           WxParse.wxParse('article', 'html', data.detail.pro_detail, _this, 5);
           _this.setData({
             recordsData: data.share,
-
+            isPage:true
           })
         }
       },
@@ -296,16 +296,19 @@ Page({
     let _this = this;
     this.setData(options)
     console.log("接收的参数", options)
-    let ct_userInfo = wx.getStorageSync("ct_userInfo")
-    if (ct_userInfo) {
-      console.log("有用户信息", ct_userInfo)
-      this.setData({
-        userid: ct_userInfo.userid,
-        unique_id: ct_userInfo.unique_id
-      })
-      this.getDetail()
-    } else {
-      console.log("没有用户信息")
+    // let ct_userInfo = wx.getStorageSync("ct_userInfo")
+    // if (ct_userInfo) {
+    //   console.log("有用户信息", ct_userInfo)
+    //   this.setData({
+    //     userid: ct_userInfo.userid,
+    //     unique_id: ct_userInfo.unique_id
+    //   })
+    //   this.getDetail()
+    // } else { }
+
+
+    console.log("登陆参数unique_id", _this.data.unique_id)
+
       wx.login({
         success: res => {
           let code = res.code;
@@ -336,7 +339,7 @@ Page({
         }
       })
 
-    }
+   
 
 
 
@@ -395,9 +398,9 @@ Page({
     }
 
     return {
-      title: '畅途汽车',
-      desc: "畅途汽车",
+      title: '养车可以不花钱，我已经领到啦，送你一张！',
       path: 'pages/share/share?pro_type_id=' + this.data.pro_type_id + "&unique_id=" + this.data.unique_id,
+      imageUrl: '../../static/img/share_img.png',  
       success: function(res) {
         // 转发成功
         Request.postFn("/api/share.php", {
@@ -408,7 +411,12 @@ Page({
             let data = res.data
             if (data.state = "true") {
 
-
+              wx.removeStorage({
+                key: 'ct_userInfo',
+                success: function(res) {},
+                fail: function(res) {},
+                complete: function(res) {},
+              })
               wx.showToast({
                 title: '分享成功',
                 icon: '',

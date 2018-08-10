@@ -11,7 +11,7 @@ Page({
     hphm: "",
     selectGg:"",
     pro_gg_index:0,
-    pro_gg:["规格一","规格二"]
+    pro_gg:[]
   },
   changePhone: function(e) {
     console.log(e.detail.value)
@@ -69,7 +69,7 @@ Page({
       userid: this.data.userid,
       pro_id: this.data.pro_id*1,
       sjhm: this.data.sjhm,
-      pro_gg: "规格一",
+      pro_gg: this.data.pro_gg[this.data.pro_gg_index],
       hphm: this.data.hphm,
       pro_num: "1",
       unique_id: this.data.unique_id
@@ -203,7 +203,5 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
-  }
+  
 })
