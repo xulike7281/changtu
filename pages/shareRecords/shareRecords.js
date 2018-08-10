@@ -3,7 +3,7 @@ const Request = require("../../utils/request.js")
 Page({
 
   /**
-   * 页面的初始数据
+   * 页面的初始数据 
    */
   data: {
     shareList: []
@@ -76,7 +76,5 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-
-  }
+ 
 })

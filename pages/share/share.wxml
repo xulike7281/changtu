@@ -44,15 +44,14 @@
       <view class='invite-count ft16' wx:if="{{recordsData.length==0}}">还没有获得奖励，快分享好友获得奖品吧！</view>
       <view class='records row  cen-space' wx:for="{{recordsData}}" wx:key="{{index}}">
         <view class='row cen-start'>
-          <image src='{{item.author}}'></image>
+          <image src='../../static/img/share_author_icon.png'></image>
           <view class='ft12'>
             <view class='color-323232'>成功邀请
-              <text class='color-ff0000'>{{item.name}}</text> </view>
-            <view class='color-6C6C6C '>你已获得(
-              <text>{{item.msg}}</text>) </view>
+              <text class='color-ff0000'>{{item.sjhm}}</text> </view>
+            <view class='color-6C6C6C '>你已获得(<text>{{item.pro_title}}</text>) </view>
           </view>
         </view>
-        <view class='ft12 color-aaa'>{{item.date}}</view>
+        <view class='ft12 color-aaa'>{{item.create_ts}}</view>
       </view>
     </view>
   </view>

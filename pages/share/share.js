@@ -15,6 +15,7 @@ Page({
     userid: "",
     second: 60,
     unique_id: "",
+    _unique_id:"",
     showShade: false, // 立即领取弹窗
     successShade: false, // 领取成功
     haveShare: false, // 已经领取弹窗
@@ -105,7 +106,7 @@ Page({
   },
   buyBtn: function() {
     wx.navigateTo({
-      url: '/pages/confirmOrder/confirmOrder?id=' + this.data.id,
+      url: '/pages/confirmOrder/confirmOrder?pro_id=' +this.data.id+"&_unique_id="+this.data._unique_id,
     })
   },
   // 输入手机号码
@@ -122,7 +123,7 @@ Page({
     if (!_this.data.phone) {
       // 手机号码为空
       wx.showToast({
-        title: '号码不能为空',
+        title: '请输入手机号码',
         icon: '',
         image: '../../static/img/icon_error.png',
         duration: 2000,
@@ -171,7 +172,6 @@ Page({
 
                     return
                   }
-
                   _this.setData({
                     second: _this.data.second - 1,
                     codebtn: _this.data.second
@@ -216,6 +216,37 @@ Page({
   //  立即领取
   getFn: function() {
     let _this = this;
+   
+    if (!_this.data.phone){
+      wx.showToast({
+        title: '手机号不能为空',
+        icon: '',
+        image: '../../static/img/icon_error.png',
+        duration: 2000,
+        mask: true
+      })
+      return
+    }
+    if (!_this.data.yzmCode){
+      wx.showToast({
+        title: '验证码不能为空',
+        icon: '',
+        image: '../../static/img/icon_error.png',
+        duration: 2000,
+        mask: true
+      })
+      return
+    }
+    if (!_this.data.car_code) {
+      wx.showToast({
+        title: '车牌号不能为空',
+        icon: '',
+        image: '../../static/img/icon_error.png',
+        duration: 2000,
+        mask: true
+      })
+      return
+    }
     let free_order = {
       userid: _this.data.userid,
       pro_id: _this.data.pro_type_id,
@@ -223,7 +254,7 @@ Page({
       sjhm: _this.data.phone,
       code: _this.data.yzmCode,
       hphm: _this.data.car_code,
-      unique_id: _this.data.unique_id,
+      unique_id: _this.data._unique_id,
       data: ""
     }
     console.log("立即领取参数", free_order)
@@ -267,13 +298,12 @@ Page({
     let _this = this;
     Request.postFn("/api/detail.php", {
         pro_id: _this.data.pro_type_id,
-        userid: _this.data.userid,
-        unique_id: _this.data.unique_id,
+        userid: _this.data.userid
       },
       res => {
         let data = res.data;
         if (data.state == "true") {
-          console.log(data.detail)
+          console.log(data)
           _this.setData(data.detail)
           WxParse.wxParse('article', 'html', data.detail.pro_detail, _this, 5);
           _this.setData({
@@ -296,18 +326,15 @@ Page({
     let _this = this;
     this.setData(options)
     console.log("接收的参数", options)
-    // let ct_userInfo = wx.getStorageSync("ct_userInfo")
-    // if (ct_userInfo) {
-    //   console.log("有用户信息", ct_userInfo)
-    //   this.setData({
-    //     userid: ct_userInfo.userid,
-    //     unique_id: ct_userInfo.unique_id
-    //   })
-    //   this.getDetail()
-    // } else { }
+    if (options.unique_id){
+      this.setData({
+        _unique_id:options.unique_id
+      })
+    }
+   
 
 
-    console.log("登陆参数unique_id", _this.data.unique_id)
+    console.log("登陆参数unique_id", _this.data._unique_id)
 
       wx.login({
         success: res => {
@@ -316,7 +343,7 @@ Page({
               code: code,
               nick: "",
               tx: "https://ct.jikeyun.net/xcx_img/demo.png",
-              unique_id: _this.data.unique_id
+            unique_id: _this.data._unique_id
             },
             res => {
               let data = res.data;

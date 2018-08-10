@@ -137,9 +137,7 @@ Page({
       })
     }
     console.log(options)
-    this.setData({
-      pro_id: options.id
-    })
+    this.setData(options)
     Request.postFn("/api/pay_detail.php", {
         userid: _this.data.userid,
         pro_id: _this.data.pro_id

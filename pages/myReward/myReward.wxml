@@ -22,7 +22,7 @@
     <block wx:for="{{couponList}}" wx:key="{{index}}" data-idx="{{index}}" id="{{item.id}}">
       <view class='margin10-top coupon-item'>
         <view class='ft19 color-ff0000'>{{item.con}}</view>
-        <view class='ft12 color-b9b9b9 margin5-top'>有效期：{{item.yhq_start_ts}}-{{yhq_end_ts}}</view>
+        <view class='ft12 color-b9b9b9 margin5-top'>有效期：{{item.yhq_start_ts}}-{{item.yhq_end_ts}}</view>
         <view class='coupon-use row cen-space' bindtap='couponUseBtn' id="{{index}}">
           <text class='ft12 color-323232'>使用须知</text>
           <image wx-if="{{activeList[index]}}" class='arrow' src='../../static/img/arrow-down.png'></image>
@@ -30,7 +30,7 @@
         </view>
       </view>
       <view wx:if='{{activeList[index]}}' class='bg-fff coupon-use-detail width100 ft12 color-323232' data-idx="{{index}}">
-        <view>{{item.yhq_start_ts}}</view>
+        <view>{{item.yhq_xz}}</view>
       </view>
     </block>
   </view>
