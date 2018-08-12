@@ -3,7 +3,10 @@
 view{
   box-sizing: border-box;
 }
-
+.placeholder {
+  color: #bdbdbd;
+  font-size: 32rpx;
+}
 page{
 /* 　　display:none; */
 /* display: none; */

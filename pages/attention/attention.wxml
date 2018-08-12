@@ -1,7 +1,8 @@
 <!--pages/attention/attention.wxml-->
+<import src="/wxParse/wxParse.wxml" />
 <view class="container bg-fff">
   <view class='content color-000 ft14'>
-   {{content}}
+   <template is="wxParse" data="{{wxParseData:article.nodes}}" />
    </view>
   
    <!-- <view class='img-wrap'>

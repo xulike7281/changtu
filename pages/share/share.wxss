@@ -156,13 +156,12 @@
 
 .getShop-main {
   width: 100%;
-  height: 648rpx;
   background-color: #fff;
   z-index: 9;
   position: absolute;
   left: 0rpx;
   bottom: 48px;
-  padding-top: 90rpx;
+  padding: 90rpx 0;
 }
 
 .getShop-main .shade-close {
@@ -211,10 +210,7 @@
   background-position: 29rpx 38rpx;
 }
 
-.placeholder {
-  color: #bdbdbd;
-  font-size: 32rpx;
-}
+
 
 .getCode {
   color: #767676;
@@ -242,7 +238,7 @@
 /* 领取成功 */
 .shade-success {
   width: 532rpx;
-  height: 662rpx;
+  /* height: 662rpx; */
   background: rgba(255, 255, 255, 1);
   border-radius: 20rpx;
   position: absolute;
@@ -250,9 +246,8 @@
   left: 50%;
   transform: translate(-50%, 0%);
   padding: 104rpx 38rpx 80rpx 40rpx;
-  box-sizing: border-box;
   text-align: center;
- 
+  box-sizing: border-box
 }
 
 
@@ -286,13 +281,13 @@
   height: 70rpx;
   background: rgba(235, 50, 35, 1);
   border-radius: 12rpx;
-  font-size: 32rpx;
+  font-size: 32rpx; 
   color: #fff;
   line-height: 70rpx;
 }
 .have-share {
   width: 532rpx;
-  height: 542rpx;
+  /* height: 542rpx; */
   background: rgba(255, 255, 255, 1);
   border-radius: 20rpx;
   position: absolute;
@@ -300,8 +295,10 @@
   left: 50%;
   transform: translate(-50%, 0%);
   padding: 114rpx 38rpx 80rpx 40rpx;
-  box-sizing: border-box;
   text-align: center;
+}
+.have-share>text{
+  margin-top: 114rpx
 }
 
 /* 领取失败 */

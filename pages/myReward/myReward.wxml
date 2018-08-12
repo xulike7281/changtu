@@ -10,7 +10,7 @@
       <view class='row cen-space width100'>
         <text class='blodr'>优惠券明细</text>
         <view class='row cen-center' bindtap='useRule'>
-          <text class='color-747474 ft12 margin5-right'>使用规则 </text>
+          <text class='color-747474 ft12 margin5-right'>使用规则</text>
           <image wx:if='{{isUse}}' class='arrow' src='../../static/img/arrow-down.png'></image>
           <image wx:if='{{!isUse}}' class='arrow-right' src='../../static/img/arrow-right.png'></image>
         </view>
@@ -62,6 +62,27 @@
   </view>
   <view class='reward-btn' bindtap='rewardBtn'>
     去使用
+  </view>
+  <view class='shade' wx:if="{{isPhone}}">
+    <view class='shade-bg'></view>
+    <view class='shade-phone column  cen-center'>
+      <text class='ft18' style='color:#000000'>请完善手机号领取奖励</text>
+      <view class='options row cen-start '>
+        <view class='icon-wrap'>
+          <image class='img-icon-phone' src='../../static/img/phone_icon.png'></image>
+        </view>
+        <input placeholder='请输入手机号码' placeholder-class='placeholder' maxlength='11' bindinput='phoneInput'></input>
+      </view>
+      <view class='options  row cen-start'>
+        <view class='icon-wrap'>
+          <image class='img-icon' src='../../static/img/code_icon.png'></image>
+        </view>
+        <input placeholder='请输入验证码' placeholder-class='placeholder' bindinput='codeInput'></input>
+        <text class='getCode' bindtap='getCode'>{{codebtn}}</text>
+      </view>
+      <view class='submitBtn' bindtap='submitPhone'>确认</view>
+      <!-- <image class='close' src='../../static/img/close_icon.png' bindtap='add_shade'></image> -->
+    </view>
   </view>
   <view class='shade' wx:if="{{isShade}}">
     <view class='shade-bg'></view>

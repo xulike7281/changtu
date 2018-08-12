@@ -109,3 +109,66 @@ color: #000;
   color: #fff;
   font-size: 36rpx;
 }
+
+.shade-phone{
+  width: 592rpx;
+  background:rgba(255,255,255,1);
+  opacity: 1;
+  border-radius:20rpx;
+  position: absolute;
+  top: 300rpx;
+  left: 50%;
+  transform: translate(-50%,0%);
+  padding: 60rpx 44rpx;
+  box-sizing: border-box;
+  text-align: center;
+  color: #000;
+}
+.options{
+  width: 100%;
+  height: 102rpx;
+  margin-top: 28rpx;
+  border-bottom: 1px solid #DCDCDC;
+  text-align: left
+}
+.getCode {
+  color: #767676;
+  font-size: 28rpx;
+  display: block;
+  width: 196rpx;
+  text-align: center;
+  line-height: 52rpx;
+  height: 52rpx;
+}
+.submitBtn {
+  width: 516rpx;
+  height: 88rpx;
+  background: rgba(255, 0, 0, 1);
+  border-radius: 44rpx;
+  margin-top: 60rpx;
+  line-height: 88rpx;
+  text-align: center;
+  color: #fff;
+  font-size: 36rpx;
+}
+.icon-wrap{
+  min-width: 48rpx;
+}
+.img-icon{
+  display: block;
+  width: 32rpx;
+  height: 32rpx;
+}
+.img-icon-phone{
+display: block;
+  width: 22rpx;
+  height: 32rpx;
+  margin-left: 4rpx;
+}
+.close{
+  position: absolute;
+  top:20rpx;
+  right: 22rpx;
+  width: 36rpx;
+  height: 36rpx;
+}

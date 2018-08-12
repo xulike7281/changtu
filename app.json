@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/share/share",
-    "pages/user/user",
-    "pages/purchaseDetails/purchaseDetails",
     "pages/myReward/myReward",
+    "pages/user/user",
+    "pages/share/share",
+    "pages/purchaseDetails/purchaseDetails",
     "pages/test/test",
     "pages/login/login",
     "pages/confirmOrder/confirmOrder",

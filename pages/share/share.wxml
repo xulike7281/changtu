@@ -38,17 +38,15 @@
         <view class='records-line'></view>
       </view>
       <view class='invite-count' wx:if="{{recordsData.length}}">
-        已成功邀请了
-        <text class=' ft16 color-ff0000'>{{recordsData.length}}</text>名小伙伴
+        已成功邀请了<text class=' ft16 color-ff0000'>{{recordsData.length}}</text>名小伙伴
       </view>
       <view class='invite-count ft16' wx:if="{{recordsData.length==0}}">还没有获得奖励，快分享好友获得奖品吧！</view>
       <view class='records row  cen-space' wx:for="{{recordsData}}" wx:key="{{index}}">
         <view class='row cen-start'>
           <image src='../../static/img/share_author_icon.png'></image>
           <view class='ft12'>
-            <view class='color-323232'>成功邀请
-              <text class='color-ff0000'>{{item.sjhm}}</text> </view>
-            <view class='color-6C6C6C '>你已获得(<text>{{item.pro_title}}</text>) </view>
+            <view class='color-323232'>成功邀请<text class='color-ff0000'>{{item.sjhm}}</text> </view>
+            <view class='color-6C6C6C '>你已获得　(<text>{{item.msg}}</text>) </view>
           </view>
         </view>
         <view class='ft12 color-aaa'>{{item.create_ts}}</view>
@@ -74,25 +72,21 @@
       <view class='shade-bg'></view>
       <view class='getShop-main column cen-start'>
         <image class='shade-close' src='../../static/img/close_icon.png' bindtap='shade'></image>
-        <view class='get-option row cen-start'>
+        <view class='get-option row cen-start' wx:if="{{has_sjhm==1}}">
           <view class='ipnut-icon phone_code'></view>
           <input class='get-input ' type='number' maxlength='11' placeholder='请输入手机号码' placeholder-class='placeholder' bindinput='phoneNumber'> </input>
         </view>
-        <view class='get-option row cen-start'>
+        <view class='get-option row cen-start' wx:if="{{has_sjhm==1}}">
           <view class='ipnut-icon security_code'></view>
           <view class='row cen-start'>
             <input class='get-input equal ' type='number' placeholder='请输入验证码' placeholder-class='placeholder' bindinput='yzmCode'> </input>
             <text class='getCode' bindtap='getCode'>{{codebtn}}</text>
           </view>
         </view>
-        <view class='get-option row cen-start'>
+        <view class='get-option row cen-start' wx:if="{{has_hphm==1}}">
           <view class='ipnut-icon car_code'></view>
-
-          <input class='get-input ' placeholder='请输入车牌号' placeholder-class='placeholder' bindinput='carCode'> </input>
-
-
+          <input class='get-input ' placeholder='请输入车牌号' maxlength='9' placeholder-class='placeholder' bindinput='carCode'> </input>
         </view>
-
         <view class='get-btn' bindtap='getFn'>立即领取</view>
       </view>
     </view>

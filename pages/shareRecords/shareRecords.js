@@ -22,6 +22,14 @@ Page({
       let data =res.data;
       if(data.state=="true"){
         console.log(data)
+        for(let i = 0;i<data.share.length;i++){
+          let  item = data.share[i];
+          if (item.type==1){
+            item.msg = "您已免费获得优惠券一张"
+          } else if (item.type == 2){
+            item.msg = "您已获得"+item.mny +"礼金"
+          }
+        }
         _this.setData({
           shareList:data.share
         }

@@ -13,11 +13,11 @@
     <view wx:if="{{!(has_sjhm==0&&has_hphm==0)}}" class='contactWay bg-fff  margin10-top'>
       <view wx:if="{{has_sjhm==1}}" class='phone  row cen-space'>
         <text class='color-323232 ft16'>手机号码</text>
-        <input class='ft14' placeholder='请输入手机号码' maxlength='11' bindinput='changePhone'></input>
+        <input class='ft14' type='number' placeholder='请输入手机号码' maxlength='11' bindinput='changePhone'></input>
       </view>
       <view  wx:if="{{has_hphm==1}}" class='carNo  row cen-space'>
         <text class='color-323232 ft16'>车牌号</text>
-        <input class='ft14' placeholder='请输入车牌号' bindinput='changeCarNo'></input>
+        <input class='ft14' placeholder='请输入车牌号' maxlength='9' bindinput='changeCarNo'></input>
       </view>
     </view>
     <view class='selectSpec' wx:if="{{pro_gg.length}}">

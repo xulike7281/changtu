@@ -20,7 +20,9 @@ Page({
     successShade: false, // 领取成功
     haveShare: false, // 已经领取弹窗
     failShare: false, // 活动已结束
-    recordsData: []
+    recordsData: [],
+    resFlag:true,
+    duration:60000
   },
   // 返回首页
   backIndex() {
@@ -56,18 +58,14 @@ Page({
             failShare: true
           })
         } else {
-          wx.showModal({
-            title: '提示',
-            content: data.msg,
-            showCancel: false,
-            cancelText: '',
-            cancelColor: '',
-            confirmText: '确定',
-            confirmColor: '',
-            success: function(res) {},
-            fail: function(res) {},
-            complete: function(res) {},
+          wx.showToast({
+            title: data.msg,
+            icon: 'none',
+            image: '',
+            duration: 2000,
+            mask: true
           })
+          
         }
       }
     })
@@ -119,24 +117,12 @@ Page({
   // 获取验证码
   getCode: function() {
     let _this = this;
-
-    if (!_this.data.phone) {
-      // 手机号码为空
-      wx.showToast({
-        title: '请输入手机号码',
-        icon: '',
-        image: '../../static/img/icon_error.png',
-        duration: 2000,
-        mask: true
-      })
-      return
-    }
     if (!(/^1[3|5|6|7|8][0-9]\d{8}$/.test(this.data.phone))) {
       console.log("号码格式不正确")
       wx.showToast({
-        title: '号码格式错误',
-        icon: '',
-        image: '../../static/img/icon_error.png',
+        title: '请输入正确的手机号码',
+        icon: 'none',
+        image: '',
         duration: 2000,
         mask: true
       })
@@ -144,6 +130,13 @@ Page({
     }
     if (_this.data.phone && _this.data.phone.length == 11) {
       if (this.data.codebtn == "获取验证码") {
+        wx.showToast({
+          title: "发送中",
+          icon: 'loading',
+          image: '',
+          duration: this.data.duration,
+          mask: true
+        })
         Request.postFn("/api/send_code.php", {
             userid: _this.data.userid,
             sjhm: _this.data.phone
@@ -152,6 +145,9 @@ Page({
             let data = res.data;
             console.log(data)
             if (data.state == "true") {
+              _this.setData({
+                duration:0
+              })
               wx.showToast({
                 title: res.data.msg,
                 icon: '',
@@ -174,7 +170,7 @@ Page({
                   }
                   _this.setData({
                     second: _this.data.second - 1,
-                    codebtn: _this.data.second
+                    codebtn: _this.data.second-1
                   })
                 }, 1000)
 
@@ -219,9 +215,9 @@ Page({
    
     if (!_this.data.phone){
       wx.showToast({
-        title: '手机号不能为空',
-        icon: '',
-        image: '../../static/img/icon_error.png',
+        title: '请输入正确的手机号码',
+        icon: 'none',
+        image: '',
         duration: 2000,
         mask: true
       })
@@ -230,18 +226,20 @@ Page({
     if (!_this.data.yzmCode){
       wx.showToast({
         title: '验证码不能为空',
-        icon: '',
-        image: '../../static/img/icon_error.png',
+        icon: 'none',
+        image: '',
         duration: 2000,
         mask: true
       })
       return
     }
-    if (!_this.data.car_code) {
+    
+    if (_this.data.car_code.length == "7" || _this.data.car_code.length == "8" || _this.data.car_code.length == "9") {
+    }else{
       wx.showToast({
-        title: '车牌号不能为空',
-        icon: '',
-        image: '../../static/img/icon_error.png',
+        title: '车牌号格式不正确',
+        icon: 'none',
+        image: '',
         duration: 2000,
         mask: true
       })
@@ -258,7 +256,18 @@ Page({
       data: ""
     }
     console.log("立即领取参数", free_order)
-    if (_this.data.phone)
+      wx.showToast({
+        title: "请求中",
+        icon: 'loading',
+        image: '',
+        duration: _this.data.duration,
+        mask: true
+      })
+
+      if(_this.data.resFlag){
+        _this.setData({
+          resFlag:false
+        })
       Request.postFn("/api/free_order.php", free_order, res => {
         let data = res.data
         if (data.state == "true") {
@@ -277,19 +286,34 @@ Page({
               haveShare: true
             })
           }
-          // wx.showToast({
-          //   title: data.msg,
-          //   icon: '',
-          //   image: '../../static/img/icon_error.png',
-          //   duration: 2000,
-          //   mask: true
-          // })
+        
         }
-      }, res => {
-        console.log("领取失败", res)
+      }, 
+      err => {
+        _this.setData({
+          resFlag: true
+        })
+        wx.showToast({
+          title: '领取异常',
+          icon: '',
+          image: '../../static/img/icon_error.png',
+          duration: 2000,
+          mask: true
+        })
+        console.log("领取失败", err)
 
-      })
-
+      },
+      com=>{
+        wx.showToast({
+          title: "请求中",
+          icon: 'loading',
+          image: '',
+          duration: 0,
+          mask: true
+        })
+      }
+      )
+      }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -306,6 +330,14 @@ Page({
           console.log(data)
           _this.setData(data.detail)
           WxParse.wxParse('article', 'html', data.detail.pro_detail, _this, 5);
+          for (let i = 0; i < data.share.length; i++) {
+            let item = data.share[i];
+            if (item.type == 1) {
+              item.msg = "优惠券一张"
+            } else if (item.type == 2) {
+              item.msg =item.mny + "礼金"
+            }
+          }
           _this.setData({
             recordsData: data.share,
             isPage:true
@@ -322,7 +354,7 @@ Page({
     return str.substring(0, 3) + "****" + str.substring(7, 11)
   },
   onLoad: function(options) {
-    console.log()
+   
     let _this = this;
     this.setData(options)
     console.log("接收的参数", options)

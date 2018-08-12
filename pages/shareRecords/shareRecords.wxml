@@ -10,7 +10,7 @@
           <text class='ft14 color-323232'>成功邀请{{item.sjhm}}</text>
           <text class='ft12 color-999'>{{item.create_ts}}</text>
         </view>
-        <text class='ft12 color-999'>#活动名#{{item.pro_title}}</text>
+        <text class='ft12 color-999'>#{{item.pro_title}}#{{item.msg}}</text>
       </view>
     </view>
   </view>

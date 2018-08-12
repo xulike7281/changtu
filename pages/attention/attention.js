@@ -1,5 +1,6 @@
 // pages/attention/attention.js
 const Request = require("../../utils/request.js")
+var WxParse = require('../../wxParse/wxParse.js');
 Page({
 
   /**
@@ -25,6 +26,7 @@ Page({
             _this.setData({
               content:data.content
             })
+          WxParse.wxParse('article', 'html', data.content, _this, 5);
         }
     })
   },
