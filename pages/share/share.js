@@ -22,7 +22,8 @@ Page({
     failShare: false, // 活动已结束
     recordsData: [],
     resFlag:true,
-    duration:60000
+    duration:60000,
+    _data:""
   },
   // 返回首页
   backIndex() {
@@ -256,7 +257,7 @@ Page({
       code: _this.data.yzmCode,
       hphm: _this.data.car_code,
       unique_id: _this.data._unique_id,
-      data: ""
+      data: this.data._data
     }
     console.log("立即领取参数", free_order)
       wx.showToast({
@@ -283,12 +284,21 @@ Page({
           })
 
         } else {
-          console.log("领取失败", res)
+          console.log("领取失败111111", res)
           if (data.is_special == 2) {
             _this.setData({
               haveShare: true
             })
+            return
           }
+          wx.showToast({
+            title: data.msg,
+            icon: '',
+            image: '../../static/img/icon_error.png',
+            duration: 2000,
+            mask: true
+          })
+          return
         
         }
       }, 
@@ -307,13 +317,7 @@ Page({
 
       },
       com=>{
-        wx.showToast({
-          title: "请求中",
-          icon: 'loading',
-          image: '',
-          duration: 0,
-          mask: true
-        })
+        
       }
       )
       }
@@ -364,6 +368,11 @@ Page({
     if (options.unique_id){
       this.setData({
         _unique_id:options.unique_id
+      })
+    }
+    if(options.data){
+      this.setData({
+       _data: options.data
       })
     }
    
