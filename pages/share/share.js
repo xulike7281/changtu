@@ -233,6 +233,8 @@ Page({
       })
       return
     }
+    if (this.data.has_hphm==1){
+
     
     if (_this.data.car_code.length == "7" || _this.data.car_code.length == "8" || _this.data.car_code.length == "9") {
     }else{
@@ -244,6 +246,7 @@ Page({
         mask: true
       })
       return
+    }
     }
     let free_order = {
       userid: _this.data.userid,

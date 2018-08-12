@@ -84,17 +84,7 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this;
-    return {
-      title: '畅途汽车',
-      desc: "畅途汽车",
-      path: 'pages/share/share?pro_type_id=' + this.data.id + "&unique_id=" + this.data.unique_id,
-      success: function (res) {
-        // 转发成功
-      },
-      fail: function (res) {
-        // 转发失败
-      }
-    }
+  
     　　// 设置菜单中的转发按钮触发转发事件时的转发内容
     　　var shareObj = {
         title: '养车可以不花钱，我已经领到啦，送你一张！',

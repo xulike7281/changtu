@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/paySuccess/paySuccess",
     "pages/myReward/myReward",
     "pages/user/user",
     "pages/share/share",
@@ -11,7 +12,6 @@
     "pages/purchaseRecord/purchaseRecord",
     "pages/getPage/getPage",
     "pages/activityList/activityList",
-    "pages/paySuccess/paySuccess",
     "pages/shareRecords/shareRecords",
     "pages/feedback/feedback",
     "pages/attention/attention",
