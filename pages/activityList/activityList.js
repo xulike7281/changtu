@@ -32,6 +32,7 @@ Page({
       })
     }
     this.setData(options);
+    console.log("活动列表页接收的参数",options)
     Request.postFn("/api/list.php", {
         pro_type_id: _this.data.pro_type_id
       },

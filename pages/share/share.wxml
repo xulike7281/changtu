@@ -4,8 +4,11 @@
   <view class='share-top'>
     <image wx:if="{{pro_file_url[0].url_type==1}}" src='{{pro_file_url[0].url}}'></image>
     <video wx:if="{{pro_file_url[0].url_type==2}}" src='{{pro_file_url[0].url}}'></video>
-    <view class='shopDetail'>
-      <view class='ft18 color-202020'>{{pro_title}}</view>
+    <view class='shopDetail '>
+      <view class='row cen-space'>
+        <text class='ft18 color-202020'>{{pro_title}}</text>
+        <text class='ft14 color-999 line-through'>￥{{pro_price}}</text>
+      </view>
       <view class='row cen-space'>
         <text class='ft15 color-aaa'>{{pro_sub_title}}</text>
         <text class='ft20 color-ff0000'>￥{{pro_real_price}}</text>
