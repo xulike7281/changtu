@@ -20,7 +20,6 @@ Page({
   },
   //事件处理函数
   selectFn: function (e) {
-    console.log(e)
     let id = e.currentTarget.id
       console.log(id)
       wx.navigateTo({

@@ -116,7 +116,13 @@ Page({
               res => {
                 console.log("微信支付订单", res)
                 let data = res.data;
-                
+                wx.showToast({
+                  title: "加载中",
+                  icon: 'loading',
+                  image: '',
+                  duration: 0,
+                  mask: true
+                })
                 if (data.state == "true") {
                   wx.requestPayment({
                     'timeStamp': data.timeStamp, // 当前的时间戳
@@ -131,7 +137,7 @@ Page({
                     },
                     'fail': function(res) {
                       wx.showToast({
-                        title: '支付异常',
+                        title: '支付失败',
                         icon: '',
                         image: '../../static/img/icon_error.png',
                         duration: 2000,
@@ -141,7 +147,7 @@ Page({
                   })
                 }else{
                   wx.showToast({
-                    title: '支付异常',
+                    title: '支付失败',
                     icon: '',
                     image: '../../static/img/icon_error.png',
                     duration: 2000,
