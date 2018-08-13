@@ -311,6 +311,12 @@ page {
 .margin20-right {
   margin-right: 40rpx;
 }
+.pad-r-10{
+  padding-right: 20rpx;
+}
+.pad-r-20{
+  padding-right: 40rpx;
+}
 /* 弹窗阴影  */
 
 .shade {

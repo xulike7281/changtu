@@ -30,7 +30,7 @@
         </view>
       </view>
       <view wx:if='{{activeList[index]}}' class='bg-fff coupon-use-detail width100 ft12 color-323232' data-idx="{{index}}">
-        <view>{{item.yhq_xz}}</view>
+        <view class='pad-r-20'>{{item.yhq_xz}}</view>
       </view>
     </block>
   </view>

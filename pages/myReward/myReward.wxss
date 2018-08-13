@@ -66,6 +66,7 @@ color: #000;
 .coupon-use-detail{
   padding:20rpx 0rpx 30rpx 50rpx;
   margin-top: -20rpx;
+  box-sizing: border-box;
   border-radius: 0rpx 0rpx 10px 10px;
   position: relative;
   z-index: 9;
