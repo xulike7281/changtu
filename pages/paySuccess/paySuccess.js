@@ -29,7 +29,9 @@ Page({
       console.log("有用户信息", ct_userInfo)
       this.setData({
         userid: ct_userInfo.userid,
-        unique_id: ct_userInfo.unique_id
+        unique_id: ct_userInfo.unique_id,
+        shareLogo: ct_userInfo.share.url,
+        shareTitle: ct_userInfo.share.title
       })
     }
 
@@ -82,11 +84,10 @@ Page({
    */
   onShareAppMessage: function() {
     var that = this;
-
     return {
-      title: '养车可以不花钱，我已经领到啦，送你一张！',
+      title: this.data.shareTitle,
       path: 'pages/share/share?pro_type_id=' + this.data.id + "&unique_id=" + this.data.unique_id,
-      imageUrl: '../../static/img/share_img.png',
+      imageUrl: this.data.shareLogo,
       success: function (res) {
         // 转发成功
         Request.postFn("/api/share.php", {

@@ -399,7 +399,9 @@ Page({
                 })
                 _this.setData({
                   userid: data.userid,
-                  unique_id: data.unique_id
+                  unique_id: data.unique_id,
+                  shareLogo: data.share.url,
+                  shareTitle: data.share.title
                 })
                 this.getDetail()
               }
@@ -469,9 +471,9 @@ Page({
     }
 
     return {
-      title: '养车可以不花钱，我已经领到啦，送你一张！',
+      title: this.data.shareTitle,
       path: 'pages/share/share?pro_type_id=' + this.data.pro_type_id + "&unique_id=" + this.data.unique_id,
-      imageUrl: '../../static/img/share_img.png',  
+      imageUrl: this.data.shareLogo,  
       success: function(res) {
         // 转发成功
         Request.postFn("/api/share.php", {
