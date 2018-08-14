@@ -85,9 +85,9 @@ Page({
   onShareAppMessage: function() {
     var that = this;
     return {
-      title: this.data.shareTitle,
+      title: this.data.share_title,
       path: 'pages/share/share?pro_type_id=' + this.data.id + "&unique_id=" + this.data.unique_id,
-      imageUrl: this.data.shareLogo,
+      imageUrl: this.data.share_logo,
       success: function (res) {
         // 转发成功
         Request.postFn("/api/share.php", {

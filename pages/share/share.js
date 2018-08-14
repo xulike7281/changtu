@@ -23,7 +23,9 @@ Page({
     recordsData: [],
     resFlag:true,
     duration:60000,
-    _data:""
+    _data:"",
+    share_title:"养车可以不花钱，我已经领到啦，送你一张",
+    share_logo:"../../static/img/share_img.png"
   },
   // 返回首页
   backIndex() {
@@ -104,8 +106,15 @@ Page({
     })
   },
   buyBtn: function() {
+    let  obj = {
+      pro_id: this.data.id,
+      _unique_id: +this.data._unique_id,
+      userid: +this.data.userid,
+      share_title: +this.data.share_title,
+      share_logo: +this.data.share_logo
+    }
     wx.navigateTo({
-      url: '/pages/confirmOrder/confirmOrder?pro_id=' +this.data.id+"&_unique_id="+this.data._unique_id,
+      url: '/pages/confirmOrder/confirmOrder?pro_id=' + this.data.id + "&_unique_id=" + this.data._unique_id + "&userid=" + this.data.userid + "&share_title=" + this.data.share_title + "&share_logo=" + this.data.share_logo
     })
   },
   // 输入手机号码
@@ -336,6 +345,12 @@ Page({
         if (data.state == "true") {
           console.log(data)
           _this.setData(data.detail)
+          if(!data.detail.share_logo){
+            _this.setData({
+              share_title: "养车可以不花钱，我已经领到啦，送你一张",
+              share_logo: "../../static/img/share_img.png"
+            })
+          }
           WxParse.wxParse('article', 'html', data.detail.pro_detail, _this, 5);
           for (let i = 0; i < data.share.length; i++) {
             let item = data.share[i];
@@ -399,9 +414,7 @@ Page({
                 })
                 _this.setData({
                   userid: data.userid,
-                  unique_id: data.unique_id,
-                  shareLogo: data.share.url,
-                  shareTitle: data.share.title
+                  unique_id: data.unique_id
                 })
                 this.getDetail()
               }
@@ -467,13 +480,12 @@ Page({
     let _this = this;
     if (res.from === 'button') {
       // 来自页面内转发按钮
-      console.log(res.target)
     }
 
     return {
-      title: this.data.shareTitle,
+      title: this.data.share_title,
       path: 'pages/share/share?pro_type_id=' + this.data.pro_type_id + "&unique_id=" + this.data.unique_id,
-      imageUrl: this.data.shareLogo,  
+      imageUrl: this.data.share_logo,  
       success: function(res) {
         // 转发成功
         Request.postFn("/api/share.php", {
