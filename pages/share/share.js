@@ -266,7 +266,7 @@ Page({
       code: _this.data.yzmCode,
       hphm: _this.data.car_code,
       unique_id: _this.data._unique_id,
-      data: this.data._data
+      data: _this.data._data
     }
     console.log("立即领取参数", free_order)
       wx.showToast({
@@ -354,14 +354,13 @@ Page({
           WxParse.wxParse('article', 'html', data.detail.pro_detail, _this, 5);
           for (let i = 0; i < data.share.length; i++) {
             let item = data.share[i];
-            if (item.type == 1) {
+            if (item.share_give_type == 1) {
               item.msg = "您已免费获得优惠券一张"
 
-            } else if (item.type == 2) {
+            } else if (item.share_give_type == 2) {
 
               item.msg = "您已获得" + item.mny + "礼金"
             }
-
             if (item.is_prize) {
               item.msg2 = "邀请成功"
             } else {
