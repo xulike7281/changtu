@@ -7,10 +7,13 @@
       </view>
       <view class='equal'>
         <view class='row cen-space'>
-          <text class='ft14 color-323232'>成功邀请{{item.sjhm}}</text>
+          <text class='ft14 color-323232'>成功邀请<text class='color-ff0000'>{{item.sjhm}}</text></text>
           <text class='ft12 color-999'>{{item.create_ts}}</text>
         </view>
-        <text class='ft12 color-999'>#{{item.pro_title}}#{{item.msg}}</text>
+        <view class='row cen-space'>
+        <text class='ft12 color-999'>{{item.msg}}</text>
+        <text class='ft12 color-323232'>{{item.msg2}}</text>
+        </view>
       </view>
     </view>
   </view>

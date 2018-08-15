@@ -123,9 +123,9 @@ Page({
     }
     　　
     var shareObj = {
-      title: '养车可以不花钱，我已经领到啦，送你一张！',
+      title: this.data.share_title,
       path: 'pages/share/share?pro_type_id=' + this.data.pro_type_id + "&unique_id=" + this.data.unique_id,
-      imageUrl: '../../static/img/share_img.png',
+      imageUrl: this.data.share_logo,
       　success: function(res) {　　　　　　
         if (res.errMsg == 'shareAppMessage:ok') {
           Request.postFn("/api/share.php", {

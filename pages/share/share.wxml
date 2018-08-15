@@ -41,7 +41,7 @@
         <view class='records-line'></view>
       </view>
       <view class='invite-count' wx:if="{{recordsData.length}}">
-        已成功邀请了<text class=' ft16 color-ff0000'>{{recordsData.length}}</text>名小伙伴
+        已邀请了<text class=' ft16 color-ff0000'>{{recordsData.length}}</text>名小伙伴
       </view>
       <view class='invite-count ft16' wx:if="{{recordsData.length==0}}">还没有获得奖励，快分享好友获得奖品吧！</view>
       <view class='records row  cen-space' wx:for="{{recordsData}}" wx:key="{{index}}">
@@ -49,10 +49,13 @@
           <image src='../../static/img/share_author_icon.png'></image>
           <view class='ft12'>
             <view class='color-323232'>成功邀请<text class='color-ff0000'>{{item.sjhm}}</text> </view>
-            <view class='color-6C6C6C '>你已获得　(<text>{{item.msg}}</text>) </view>
+            <view class='color-6C6C6C '>{{item.msg}} </view>
           </view>
         </view>
-        <view class='ft12 color-aaa'>{{item.create_ts}}</view>
+        <view class='column  cen-space'>
+          <view class='ft12 color-aaa'>{{item.create_ts}}</view>
+          <view class='ft12  color-000'>{{item.msg2}}</view>
+        </view>
       </view>
     </view>
   </view>

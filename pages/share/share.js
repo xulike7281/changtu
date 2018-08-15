@@ -355,9 +355,18 @@ Page({
           for (let i = 0; i < data.share.length; i++) {
             let item = data.share[i];
             if (item.type == 1) {
-              item.msg = "优惠券一张"
+              item.msg = "您已免费获得优惠券一张"
+
             } else if (item.type == 2) {
-              item.msg =item.mny + "礼金"
+
+              item.msg = "您已获得" + item.mny + "礼金"
+            }
+
+            if (item.is_prize) {
+              item.msg2 = "邀请成功"
+            } else {
+              item.msg2 = "TA还未到店使用"
+
             }
           }
           _this.setData({
