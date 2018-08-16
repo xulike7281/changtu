@@ -50,6 +50,7 @@
 }
 
 .btn-wrap .shopping-btn image {
+  position: relative;
   display: block;
   width: 247rpx;
   height: 88rpx;
@@ -352,4 +353,16 @@
     width: 27px;
     height: 27px;
     margin: 2rpx 0;
+}
+.formId-btn-lq{
+  /* opacity: 0; */
+  position: relative;
+  border: none;
+  height: 44px;
+  font-size: 0rpx;
+  padding: 0px;
+  margin: 0px
+}
+form{
+  width: 100%;
 }

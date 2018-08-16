@@ -27,6 +27,20 @@ Page({
     share_title:"养车可以不花钱，我已经领到啦，送你一张",
     share_logo:"../../static/img/share_img.png"
   },
+
+  formSubmit:function(e){
+    let  _this = this 
+    console.log("form", e.detail.formId)
+    Request.postFn("/api/record_formid.php",{
+      userid: _this.data.userid,
+      formid: e.detail.formId
+    },
+    res=>{
+        console.log("提交formid成功",res)
+    },err=>{
+      console.log("提交formidfail", err)
+    })
+  },
   // 返回首页
   backIndex() {
     wx.reLaunch({
