@@ -26,6 +26,24 @@ Page({
         url: '/pages/activityList/activityList?pro_type_id='+id,
       })
   },
+
+  // 跳转小程序
+  tiaozhuan:function(e){
+      console.log("发现畅途")
+      wx.navigateToMiniProgram({
+        appId: 'wxddbe5461e496ea6f',
+        path: '',
+        extraData: {},
+        envVersion: '',
+        success: function(res) {
+          console.log("11")
+        },
+        fail: function(res) {
+          console.log("22")
+        },
+        complete: function(res) {},
+      })
+  },
   onLoad: function() {
     let _this = this
 

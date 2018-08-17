@@ -25,7 +25,7 @@
           </view>
       </view>
   </view>
-  <view class='shop'>
+  <view class='shop' bindtap='tiaozhuan'>
      <image src='../../static/img/index_shop_bg.png'></image> 
      <!-- <view class='shop-wrap row cen-space '>
         <view class='shop-content column '>
