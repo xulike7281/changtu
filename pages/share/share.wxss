@@ -136,7 +136,7 @@
 .shop-detail {
   width: 100%;
   margin-top: 10rpx;
-  padding: 16rpx 30rpx 68rpx 30rpx;
+  padding: 16rpx 0rpx 68rpx 0rpx;
 }
 
 .detail-text {
