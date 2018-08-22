@@ -8,6 +8,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    globalUrl: "https://ct.jikeyun.net"
+    globalUrl: "https://api.activity.miniapp.ctauto.cn"
   }
 })

@@ -25,7 +25,7 @@ Page({
         for (let i = 0; i < data.share.length;i++){
           let item = data.share[i];
           if (item.share_give_type==1){
-            item.msg = "您已免费获得优惠券一张"
+            item.msg = "朋友到店使用后你可获得奖励"
           
           } else if (item.share_give_type == 2){
 

@@ -17,7 +17,7 @@
   width: 160rpx;
   height: 160rpx;
   border-radius: 50%;
-  background: url("https://ct.jikeyun.net/xcx_img/share_author_icon.png");
+  background: url("https://api.activity.miniapp.ctauto.cn/xcx_img/share_author_icon.png");
   background-size: 100% 100%;
   margin-bottom: 10rpx;
 }

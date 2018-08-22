@@ -423,7 +423,7 @@ Page({
           Request.postFn("/api/get_wx_userid.php", {
               code: code,
               nick: "",
-              tx: "https://ct.jikeyun.net/xcx_img/demo.png",
+            tx: "https://api.activity.miniapp.ctauto.cn/xcx_img/demo.png",
             unique_id: _this.data._unique_id
             },
             res => {

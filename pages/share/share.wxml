@@ -124,7 +124,7 @@
       <view class='have-share culomn cen-start'>
         <image src='../../static/img/close_icon.png' bindtap='shareHave'></image>
         <text class='ft14 color-323232'>您已领过券了</text>
-        <view class='ft16 color-EB3223  margin10-top  '>请关注“畅途汽车保养连锁”公众号了解使用</view>
+        <view class='ft16 color-EB3223  margin10-top  '>请关注“畅途汽车保养连锁”公众号查看优惠券</view>
         <view class='backIndex margin20-top  margin10-bottom' bindtap='backIndex'>返回首页</view>
         <button class='shade-share-btn' open-type="share">分享幸运给小伙伴</button>
       </view>
