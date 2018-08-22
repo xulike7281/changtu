@@ -45,7 +45,7 @@
           <image wx-if="{{!isRewardBUse}}" class='arrow-right' src='../../static/img/arrow-right.png'></image>
         </view>
       </view>
-      <view wx-if="{{isRewardBUse}}" class='reward-detail color-999 ft14'>
+      <view wx-if="{{isRewardBUse}}" class='reward-detail color-999 ft14  margin5-top'>
         <view>1，参与分享活动获得的礼金可在畅途旗下所有门店使用；</view>
         <view>2，每笔礼金的有效期为到账日起365天内有效，逾期作废，不兑现；</view>
         <view>3，礼金不可用于购买车险、车业代办服务、会员套餐、促销套餐和轮胎；</view>
