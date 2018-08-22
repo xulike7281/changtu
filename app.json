@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/myReward/myReward",
     "pages/index/index",
     "pages/paySuccess/paySuccess",
-    "pages/myReward/myReward",
     "pages/user/user",
     "pages/share/share",
     "pages/purchaseDetails/purchaseDetails",
