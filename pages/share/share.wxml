@@ -113,7 +113,7 @@
         <text class='fe14 color-323232 '>恭喜您领取成功</text>
         <text class='ft22 margin10-top margin10-bottom'>{{pro_title}}</text>
         <text class='ft14 margin5-bottom color-323232'>已经放入您{{_phone}}账户</text>
-        <text class='ft16 color-EB3223'>请关注“畅途汽车保养连锁”公众号了解使用</text>
+        <text class='ft16 color-EB3223'>请关注“畅途汽车保养连锁”公众号查看优惠券</text>
         <view class='backIndex margin20-top  margin10-bottom' bindtap='backIndex'>返回首页</view>
         <button class='shade-share-btn' open-type="share">分享幸运给小伙伴</button>
       </view>
