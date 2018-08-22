@@ -71,7 +71,7 @@
         <view class='icon-wrap'>
           <image class='img-icon-phone' src='../../static/img/phone_icon.png'></image>
         </view>
-        <input placeholder='请输入手机号码' placeholder-class='placeholder' maxlength='11' bindinput='phoneInput'></input>
+        <input placeholder='请输入手机号码' placeholder-class='placeholder' maxlength='11' bindinput='phone' value="inputTell"></input>
       </view>
       <view class='options  row cen-start'>
         <view class='icon-wrap'>

@@ -86,7 +86,7 @@
           <image class='shade-close' src='../../static/img/close_icon.png' bindtap='shade'></image>
           <view class='get-option row cen-start' wx:if="{{has_sjhm==1}}">
             <view class='ipnut-icon phone_code'></view>
-            <input class='get-input ' type='number' maxlength='11' placeholder='请输入手机号码' placeholder-class='placeholder' bindinput='phoneNumber'> </input>
+            <input class='get-input ' type='number' maxlength='11'  value='{{phone}}' placeholder='请输入手机号码' placeholder-class='placeholder' bindinput='phoneNumber'> </input>
           </view>
           <view class='get-option row cen-start' wx:if="{{has_sjhm==1}}">
             <view class='ipnut-icon security_code'></view>
@@ -97,7 +97,7 @@
           </view>
           <view class='get-option row cen-start' wx:if="{{has_hphm==1}}">
             <view class='ipnut-icon car_code'></view>
-            <input class='get-input ' placeholder='请输入车牌号' maxlength='9' placeholder-class='placeholder' bindinput='carCode'> </input>
+            <input class='get-input ' placeholder='请输入车牌号' value='{{car_code}}' maxlength='9' placeholder-class='placeholder' bindinput='carCode'> </input>
           </view>
           <view class='get-btn' bindtap='getFn'>立即领取</view>
         </view>

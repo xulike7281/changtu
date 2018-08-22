@@ -359,12 +359,19 @@ Page({
         if (data.state == "true") {
           console.log(data)
           _this.setData(data.detail)
+          if (data.user_mes.sjhm){
+            _this.setData({
+              phone: data.user_mes.sjhm,
+              car_code: data.user_mes.hphm
+            })
+          }
           if(!data.detail.share_logo){
             _this.setData({
               share_title: "养车可以不花钱，我已经领到啦，送你一张",
               share_logo: "../../static/img/share_img.png"
             })
           }
+          
           WxParse.wxParse('article', 'html', data.detail.pro_detail, _this, 5);
           for (let i = 0; i < data.share.length; i++) {
             let item = data.share[i];
