@@ -36,7 +36,7 @@ Page({
             item.msg2 = "邀请成功"
           } else {
             item.msg2 = "TA还未到店使用"
-
+            item.msg = "朋友到店使用后你可获得奖励"
           }
         }
         _this.setData({

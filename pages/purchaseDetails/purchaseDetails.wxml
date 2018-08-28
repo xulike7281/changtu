@@ -36,7 +36,7 @@
   <view class='shade' wx:if="{{isShade}}">
     <view class='shade-bg'></view>
     <view class='shade-main row cen-center'>
-      <text class='ft18' style='color:#000000'>关注公众号“畅途汽车保养连锁”，查看附近门店</text>
+      <text class='ft18' style='color:#000000'>请关注“畅途汽车保养连锁”公众号了解使用</text>
       <image src='../../static/img/close_icon.png' bindtap='shade'></image>
     </view>
   </view>

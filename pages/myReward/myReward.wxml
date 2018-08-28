@@ -35,17 +35,17 @@
     </block>
   </view>
 
-  <view class='width100' wx:if="{{!isShow}}">
-    <view class='myReward-main margin10-top bg-fff'>
-      <view class='main-top row cen-space'>
+  <view class='coupon-wrap' wx:if="{{!isShow}}">
+    <view class='couponDetail column cne-center'>
+      <view class='width100 row cen-space'>
         <text class='color-323232 ft16'>礼金明细</text>
         <view class='row cen-center'>
-          <text class='ft12 color-999 margin5-right' bindtap='rewardUseBtn'>使用规则</text>
+          <text class='ft12 color-747474 margin5-right' bindtap='rewardUseBtn'>使用规则</text>
           <image wx-if="{{isRewardBUse}}" class='arrow' src='../../static/img/arrow-down.png'></image>
           <image wx-if="{{!isRewardBUse}}" class='arrow-right' src='../../static/img/arrow-right.png'></image>
         </view>
       </view>
-      <view wx-if="{{isRewardBUse}}" class='reward-detail color-999 ft14'>
+      <view wx-if="{{isRewardBUse}}" class='reward-detail color-999 ft14  margin5-top'>
         <view>1，参与分享活动获得的礼金可在畅途旗下所有门店使用；</view>
         <view>2，每笔礼金的有效期为到账日起365天内有效，逾期作废，不兑现；</view>
         <view>3，礼金不可用于购买车险、车业代办服务、会员套餐、促销套餐和轮胎；</view>
@@ -71,7 +71,7 @@
         <view class='icon-wrap'>
           <image class='img-icon-phone' src='../../static/img/phone_icon.png'></image>
         </view>
-        <input placeholder='请输入手机号码' placeholder-class='placeholder' maxlength='11' bindinput='phoneInput'></input>
+        <input placeholder='请输入手机号码' placeholder-class='placeholder' maxlength='11' bindinput='phone' value="inputTell"></input>
       </view>
       <view class='options  row cen-start'>
         <view class='icon-wrap'>

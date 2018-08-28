@@ -86,7 +86,7 @@
           <image class='shade-close' src='../../static/img/close_icon.png' bindtap='shade'></image>
           <view class='get-option row cen-start' wx:if="{{has_sjhm==1}}">
             <view class='ipnut-icon phone_code'></view>
-            <input class='get-input ' type='number' maxlength='11' placeholder='请输入手机号码' placeholder-class='placeholder' bindinput='phoneNumber'> </input>
+            <input class='get-input ' type='number' maxlength='11'  value='{{phone}}' placeholder='请输入手机号码' placeholder-class='placeholder' bindinput='phoneNumber'> </input>
           </view>
           <view class='get-option row cen-start' wx:if="{{has_sjhm==1}}">
             <view class='ipnut-icon security_code'></view>
@@ -97,7 +97,7 @@
           </view>
           <view class='get-option row cen-start' wx:if="{{has_hphm==1}}">
             <view class='ipnut-icon car_code'></view>
-            <input class='get-input ' placeholder='请输入车牌号' maxlength='9' placeholder-class='placeholder' bindinput='carCode'> </input>
+            <input class='get-input ' placeholder='请输入车牌号' value='{{car_code}}' maxlength='9' placeholder-class='placeholder' bindinput='carCode'> </input>
           </view>
           <view class='get-btn' bindtap='getFn'>立即领取</view>
         </view>
@@ -113,7 +113,7 @@
         <text class='fe14 color-323232 '>恭喜您领取成功</text>
         <text class='ft22 margin10-top margin10-bottom'>{{pro_title}}</text>
         <text class='ft14 margin5-bottom color-323232'>已经放入您{{_phone}}账户</text>
-        <text class='ft16 color-EB3223'>请关注“畅途汽车保养连锁”公众号了解使用</text>
+        <text class='ft16 color-EB3223'>请关注“畅途汽车保养连锁”公众号查看优惠券</text>
         <view class='backIndex margin20-top  margin10-bottom' bindtap='backIndex'>返回首页</view>
         <button class='shade-share-btn' open-type="share">分享幸运给小伙伴</button>
       </view>
@@ -124,7 +124,7 @@
       <view class='have-share culomn cen-start'>
         <image src='../../static/img/close_icon.png' bindtap='shareHave'></image>
         <text class='ft14 color-323232'>您已领过券了</text>
-        <view class='ft16 color-EB3223  margin10-top  '>请关注“畅途汽车保养连锁”公众号了解使用</view>
+        <view class='ft16 color-EB3223  margin10-top  '>请关注“畅途汽车保养连锁”公众号查看优惠券</view>
         <view class='backIndex margin20-top  margin10-bottom' bindtap='backIndex'>返回首页</view>
         <button class='shade-share-btn' open-type="share">分享幸运给小伙伴</button>
       </view>

@@ -49,7 +49,7 @@ color: #000;
   position: relative;
   width: 100%;
   height: 230rpx;
-  background: url("https://ct.jikeyun.net/xcx_img/coupon2.png")  no-repeat 44rpx 32rpx, url("https://ct.jikeyun.net/xcx_img/couon_line.png");
+  background: url("https://api.activity.miniapp.ctauto.cn/xcx_img/coupon2.png")  no-repeat 44rpx 32rpx, url("https://api.activity.miniapp.ctauto.cn/xcx_img/couon_line.png");
   background-size: 104rpx 88rpx,100% 100%;
   background-origin: padding-box;
   padding-top:32rpx;

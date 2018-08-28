@@ -8,6 +8,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    globalUrl: "api.activity.miniapp.ctauto.cn"
+    globalUrl: "https://api.activity.miniapp.ctauto.cn"
   }
 })

@@ -62,7 +62,7 @@
   left: 0rpx;
   width: 247rpx;
   height: 88rpx;
-  background: url("https://ct.jikeyun.net/xcx_img/share_btn.png");
+  background: url("https://api.activity.miniapp.ctauto.cn/xcx_img/share_btn.png");
   background-size: 100% 100%;
 }
 
@@ -136,7 +136,7 @@
 .shop-detail {
   width: 100%;
   margin-top: 10rpx;
-  padding: 16rpx 30rpx 68rpx 30rpx;
+  padding: 16rpx 0rpx 68rpx 0rpx;
 }
 
 .detail-text {
@@ -194,19 +194,19 @@
 }
 
 .phone_code {
-  background-image: url("https://ct.jikeyun.net/xcx_img/phone_code.png");
+  background-image: url("https://api.activity.miniapp.ctauto.cn/xcx_img/phone_code.png");
   background-size: 31rpx 44rpx;
   background-position: 34rpx 30rpx;
 }
 
 .security_code {
-  background-image: url("https://ct.jikeyun.net/xcx_img/security_code.png");
+  background-image: url("https://api.activity.miniapp.ctauto.cn/xcx_img/security_code.png");
   background-size: 33rpx 44rpx;
   background-position: 33rpx 30rpx;
 }
 
 .car_code {
-  background-image: url("https://ct.jikeyun.net/xcx_img/car_icon.png");
+  background-image: url("https://api.activity.miniapp.ctauto.cn/xcx_img/car_icon.png");
   background-size: 40rpx 34rpx;
   background-position: 29rpx 38rpx;
 }

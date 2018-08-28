@@ -302,6 +302,7 @@ Page({
           _this.setData({
             showShade: false,
             successShade: true,
+            duration:0,
             ddbh: data.ddbh,
             _phone: _this.strFn(_this.data.phone)
           })
@@ -359,12 +360,19 @@ Page({
         if (data.state == "true") {
           console.log(data)
           _this.setData(data.detail)
+          if (data.user_mes.sjhm){
+            _this.setData({
+              phone: data.user_mes.sjhm,
+              car_code: data.user_mes.hphm
+            })
+          }
           if(!data.detail.share_logo){
             _this.setData({
               share_title: "养车可以不花钱，我已经领到啦，送你一张",
               share_logo: "../../static/img/share_img.png"
             })
           }
+          
           WxParse.wxParse('article', 'html', data.detail.pro_detail, _this, 5);
           for (let i = 0; i < data.share.length; i++) {
             let item = data.share[i];
@@ -379,7 +387,7 @@ Page({
               item.msg2 = "邀请成功"
             } else {
               item.msg2 = "TA还未到店使用"
-
+              item.msg = "朋友到店使用后你可获得奖励"
             }
           }
           _this.setData({
@@ -423,7 +431,7 @@ Page({
           Request.postFn("/api/get_wx_userid.php", {
               code: code,
               nick: "",
-              tx: "https://ct.jikeyun.net/xcx_img/demo.png",
+            tx: "https://api.activity.miniapp.ctauto.cn/xcx_img/demo.png",
             unique_id: _this.data._unique_id
             },
             res => {
