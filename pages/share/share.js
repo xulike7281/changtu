@@ -15,31 +15,31 @@ Page({
     userid: "",
     second: 60,
     unique_id: "",
-    _unique_id:"",
+    _unique_id: "",
     showShade: false, // 立即领取弹窗
     successShade: false, // 领取成功
     haveShare: false, // 已经领取弹窗
     failShare: false, // 活动已结束
     recordsData: [],
-    resFlag:true,
-    duration:60000,
-    _data:"",
-    share_title:"养车可以不花钱，我已经领到啦，送你一张",
-    share_logo:"../../static/img/share_img.png"
+    resFlag: true,
+    duration: 60000,
+    _data: "",
+    share_title: "养车可以不花钱，我已经领到啦，送你一张",
+    share_logo: "../../static/img/share_img.png"
   },
 
-  formSubmit:function(e){
-    let  _this = this 
+  formSubmit: function(e) {
+    let _this = this
     console.log("form", e.detail.formId)
-    Request.postFn("/api/record_formid.php",{
-      userid: _this.data.userid,
-      formid: e.detail.formId
-    },
-    res=>{
-        console.log("提交formid成功",res)
-    },err=>{
-      console.log("提交formidfail", err)
-    })
+    Request.postFn("/api/record_formid.php", {
+        userid: _this.data.userid,
+        formid: e.detail.formId
+      },
+      res => {
+        console.log("提交formid成功", res)
+      }, err => {
+        console.log("提交formidfail", err)
+      })
   },
   // 返回首页
   backIndex() {
@@ -82,7 +82,7 @@ Page({
             duration: 2000,
             mask: true
           })
-          
+
         }
       }
     })
@@ -120,7 +120,7 @@ Page({
     })
   },
   buyBtn: function() {
-    let  obj = {
+    let obj = {
       pro_id: this.data.id,
       _unique_id: +this.data._unique_id,
       userid: +this.data.userid,
@@ -170,7 +170,7 @@ Page({
             console.log(data)
             if (data.state == "true") {
               _this.setData({
-                duration:0
+                duration: 0
               })
               wx.showToast({
                 title: res.data.msg,
@@ -194,7 +194,7 @@ Page({
                   }
                   _this.setData({
                     second: _this.data.second - 1,
-                    codebtn: _this.data.second-1
+                    codebtn: _this.data.second - 1
                   })
                 }, 1000)
 
@@ -236,8 +236,8 @@ Page({
   //  立即领取
   getFn: function() {
     let _this = this;
-   
-    if (!_this.data.phone){
+
+    if (!_this.data.phone) {
       wx.showToast({
         title: '请输入正确的手机号码',
         icon: 'none',
@@ -247,7 +247,7 @@ Page({
       })
       return
     }
-    if (!_this.data.yzmCode){
+    if (!_this.data.yzmCode) {
       wx.showToast({
         title: '验证码不能为空',
         icon: 'none',
@@ -257,20 +257,17 @@ Page({
       })
       return
     }
-    if (this.data.has_hphm==1){
-
-    
-    if (_this.data.car_code.length == "7" || _this.data.car_code.length == "8" || _this.data.car_code.length == "9") {
-    }else{
-      wx.showToast({
-        title: '车牌号格式不正确',
-        icon: 'none',
-        image: '',
-        duration: 2000,
-        mask: true
-      })
-      return
-    }
+    if (this.data.has_hphm == 1) {
+      if (_this.data.car_code.length == "7" || _this.data.car_code.length == "8" || _this.data.car_code.length == "9") {} else {
+        wx.showToast({
+          title: '车牌号格式不正确',
+          icon: 'none',
+          image: '',
+          duration: 2000,
+          mask: true
+        })
+        return
+      }
     }
     let free_order = {
       userid: _this.data.userid,
@@ -283,68 +280,77 @@ Page({
       data: _this.data._data
     }
     console.log("立即领取参数", free_order)
-      wx.showToast({
-        title: "请求中",
-        icon: 'loading',
-        image: '',
-        duration: _this.data.duration,
-        mask: true
+    wx.showToast({
+      title: "请求中",
+      icon: 'loading',
+      image: '',
+      duration: _this.data.duration,
+      mask: true
+    })
+
+    if (_this.data.resFlag) {
+      _this.setData({
+        resFlag: false
       })
 
-      if(_this.data.resFlag){
-        _this.setData({
-          resFlag:false
-        })
       Request.postFn("/api/free_order.php", free_order, res => {
-        let data = res.data
-        if (data.state == "true") {
-          console.log("领取成功", res)
-          _this.setData({
-            showShade: false,
-            successShade: true,
-            duration:0,
-            ddbh: data.ddbh,
-            _phone: _this.strFn(_this.data.phone)
-          })
-
-        } else {
-          console.log("领取失败111111", res)
-          if (data.is_special == 2) {
+          let data = res.data
+          if (data.state == "true") {
+            console.log("领取成功", res)
+         
             _this.setData({
-              haveShare: true
+              showShade: false,
+              successShade: true,
+              ddbh: data.ddbh,
+              _phone: _this.strFn(_this.data.phone)
+            })
+
+          } else {
+            console.log("领取失败111111", res)
+            if (data.is_special == 2) {
+              wx.showToast({
+                title: "请求中",
+                icon: 'loading',
+                image: '',
+                duration: 0,
+                mask: true
+              })
+              _this.setData({
+                haveShare: true
+              })
+              return
+            }
+            wx.showToast({
+              title: data.msg,
+              icon: '',
+              image: '../../static/img/icon_error.png',
+              duration: 2000,
+              mask: true
             })
             return
+
           }
+        },
+        err => {
           wx.showToast({
-            title: data.msg,
+            title: '领取异常',
             icon: '',
             image: '../../static/img/icon_error.png',
             duration: 2000,
             mask: true
           })
-          return
-        
-        }
-      }, 
-      err => {
-        _this.setData({
-          resFlag: true
-        })
-        wx.showToast({
-          title: '领取异常',
-          icon: '',
-          image: '../../static/img/icon_error.png',
-          duration: 2000,
-          mask: true
-        })
-        console.log("领取失败", err)
 
-      },
-      com=>{
-        
-      }
+        },
+        com => {
+
+         
+          console.log("com")
+          _this.setData({
+            resFlag: true
+          })
+        }
       )
-      }
+    }
   },
   /**
    * 生命周期函数--监听页面加载
@@ -360,19 +366,19 @@ Page({
         if (data.state == "true") {
           console.log(data)
           _this.setData(data.detail)
-          if (data.user_mes.sjhm){
+          if (data.user_mes.sjhm) {
             _this.setData({
               phone: data.user_mes.sjhm,
               car_code: data.user_mes.hphm
             })
           }
-          if(!data.detail.share_logo){
+          if (!data.detail.share_logo) {
             _this.setData({
               share_title: "养车可以不花钱，我已经领到啦，送你一张",
               share_logo: "../../static/img/share_img.png"
             })
           }
-          
+
           WxParse.wxParse('article', 'html', data.detail.pro_detail, _this, 5);
           for (let i = 0; i < data.share.length; i++) {
             let item = data.share[i];
@@ -392,7 +398,7 @@ Page({
           }
           _this.setData({
             recordsData: data.share,
-            isPage:true
+            isPage: true
           })
         }
       },
@@ -406,56 +412,56 @@ Page({
     return str.substring(0, 3) + "****" + str.substring(7, 11)
   },
   onLoad: function(options) {
-   
+
     let _this = this;
     this.setData(options)
     console.log("接收的参数", options)
-    if (options.unique_id){
+    if (options.unique_id) {
       this.setData({
-        _unique_id:options.unique_id
+        _unique_id: options.unique_id
       })
     }
-    if(options.data){
+    if (options.data) {
       this.setData({
-       _data: options.data
+        _data: options.data
       })
     }
-   
+
 
 
     console.log("登陆参数unique_id", _this.data._unique_id)
 
-      wx.login({
-        success: res => {
-          let code = res.code;
-          Request.postFn("/api/get_wx_userid.php", {
-              code: code,
-              nick: "",
+    wx.login({
+      success: res => {
+        let code = res.code;
+        Request.postFn("/api/get_wx_userid.php", {
+            code: code,
+            nick: "",
             tx: "https://api.activity.miniapp.ctauto.cn/xcx_img/demo.png",
             unique_id: _this.data._unique_id
-            },
-            res => {
-              let data = res.data;
-              console.log("活动详情页获取userid", data)
-              if (data.state == "true") {
-                wx.setStorage({
-                  key: 'ct_userInfo',
-                  data: data
-                })
-                _this.setData({
-                  userid: data.userid,
-                  unique_id: data.unique_id
-                })
-                this.getDetail()
-              }
-            },
-            res => {
+          },
+          res => {
+            let data = res.data;
+            console.log("活动详情页获取userid", data)
+            if (data.state == "true") {
+              wx.setStorage({
+                key: 'ct_userInfo',
+                data: data
+              })
+              _this.setData({
+                userid: data.userid,
+                unique_id: data.unique_id
+              })
+              this.getDetail()
+            }
+          },
+          res => {
 
-            })
-        }
-      })
+          })
+      }
+    })
 
-   
+
 
 
 
@@ -515,7 +521,7 @@ Page({
     return {
       title: this.data.share_title,
       path: 'pages/share/share?pro_type_id=' + this.data.pro_type_id + "&unique_id=" + this.data.unique_id,
-      imageUrl: this.data.share_logo,  
+      imageUrl: this.data.share_logo,
       success: function(res) {
         // 转发成功
         Request.postFn("/api/share.php", {
